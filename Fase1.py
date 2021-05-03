@@ -83,7 +83,7 @@ def Fase1(state):
 
     alma_monstro = pygame.image.load('alma_monstro.png')
     alma_monstro = pygame.transform.scale(alma_monstro, (50, 77))
-
+    somrodando = True
     musicarodando = True
     movimento_direita = False
     movimento_esquerda = False
@@ -589,10 +589,11 @@ def Fase1(state):
             if player_rect.colliderect(monstro_rect0) and contador_hit >= 100 and bater == False and game_over == False and morreu0 == False:
                 bater_monstro0 = True
                 tomar_hit = True
-                Somdano.play()
                 vidas -= 1
                 listavida.pop(-1)
                 contador_hit = 0
+                if somrodando == True:
+                    Somdano.play()
             if player_rect.colliderect(monstro_rect0) and contador_hit >= 100 and bater == True and bater_monstro0 == False:
                 contador0 = 1
                 morreu0 = True
@@ -625,10 +626,11 @@ def Fase1(state):
             if player_rect.colliderect(monstro_rect1) and contador_hit >= 100 and bater == False and game_over == False and morreu1 == False:
                 bater_monstro1 = True
                 tomar_hit = True
-                Somdano.play()
                 vidas -= 1
                 listavida.pop(-1)
                 contador_hit = 0
+                if somrodando == True:
+                    Somdano.play()
             if player_rect.colliderect(monstro_rect1) and contador_hit >= 100 and bater == True and bater_monstro1 == False:
                 contador1 = 1
                 morreu1 = True
@@ -661,10 +663,11 @@ def Fase1(state):
             if player_rect.colliderect(monstro_rect2) and contador_hit >= 100 and bater == False and game_over == False and morreu2 == False:
                 bater_monstro2 = True
                 tomar_hit = True
-                Somdano.play()
                 vidas -= 1
                 listavida.pop(-1)
                 contador_hit = 0
+                if somrodando == True:
+                    Somdano.play()
             if player_rect.colliderect(monstro_rect2) and contador_hit >= 100 and bater == True and bater_monstro2 == False:
                 contador2 = 1
                 morreu2 = True
@@ -697,10 +700,11 @@ def Fase1(state):
             if player_rect.colliderect(monstro_rect3) and contador_hit >= 100 and bater == False and game_over == False and morreu3 == False:
                 bater_monstro3 = True
                 tomar_hit = True
-                Somdano.play()
                 vidas -= 1
                 listavida.pop(-1)
                 contador_hit = 0
+                if somrodando == True:
+                    Somdano.play()
             if player_rect.colliderect(monstro_rect3) and contador_hit >= 100 and bater == True and bater_monstro3 == False:
                 contador3 = 1
                 morreu3 = True
@@ -734,10 +738,11 @@ def Fase1(state):
             if player_rect.colliderect(monstro_rect4) and contador_hit >= 100 and bater == False and game_over == False and morreu4 == False:
                 bater_monstro4 = True
                 tomar_hit = True
-                Somdano.play()
                 vidas -= 1
                 listavida.pop(-1)
                 contador_hit = 0
+                if somrodando == True:
+                    Somdano.play()
             if player_rect.colliderect(monstro_rect4) and contador_hit >= 100 and bater == True and bater_monstro4 == False:
                 contador4 = 1
                 morreu4 = True
@@ -771,10 +776,11 @@ def Fase1(state):
             if player_rect.colliderect(monstro_rect5) and contador_hit >= 100 and bater == False and game_over == False and morreu5 == False:
                 bater_monstro5 = True
                 tomar_hit = True
-                Somdano.play()
                 vidas -= 1
                 listavida.pop(-1)
                 contador_hit = 0
+                if somrodando == True:
+                    Somdano.play()
             if player_rect.colliderect(monstro_rect5) and contador_hit >= 100 and bater == True and bater_monstro5 == False:
                 contador5 = 1
                 morreu5 = True
@@ -806,10 +812,11 @@ def Fase1(state):
             if player_rect.colliderect(monstro_rect6) and contador_hit >= 100 and bater == False and game_over == False and morreu6 == False:
                 bater_monstro6 = True
                 tomar_hit = True
-                Somdano.play()
                 vidas -= 1
                 listavida.pop(-1)
                 contador_hit = 0
+                if somrodando == True:
+                    Somdano.play()
             if player_rect.colliderect(monstro_rect6) and contador_hit >= 100 and bater == True and bater_monstro6 == False:
                 contador6 = 1
                 morreu6 = True
@@ -867,10 +874,104 @@ def Fase1(state):
 
         if len(listavida) == 0:
             game_over = True
-            if contador_restart == 100:
-                state = "Tela_Morte"
-                return state
+            if contador_restart > 100:
+                pygame.init()
 
+                fontefrase = pygame.font.Font('freesansbold.ttf', 15)
+                fontenome = pygame.font.Font('freesansbold.ttf', 10)
+                clock = pygame.time.Clock()
+                janela_largura = 1200
+                janela_altura = 675
+                janela = pygame.display.set_mode((janela_largura, janela_altura))
+                pygame.display.set_caption('One soul for another')
+
+                # load images
+                arvore = pygame.image.load('arvoremorte.png')
+                arvore = pygame.transform.scale(arvore, (600, 650))
+
+                morte = pygame.image.load('Player_animations/Kaorimorrendo/Kaorimorrendo11.png')
+                morte = pygame.transform.scale(morte, (130, 120))
+
+                restart = pygame.image.load('recomecar_restart.png')
+                restart = pygame.transform.scale(restart, (230, 109))
+
+                voltar_menu = pygame.image.load('voltar_ao_menu_restart.png')
+                voltar_menu = pygame.transform.scale(voltar_menu, (230, 109))
+
+                animation_frames
+                animation_frames = {}
+
+                def load_animations(path, frame_duration):
+                    global animation_frames
+                    nome_animacao = path.split('/')[-1]
+                    animation_frame_data = []
+                    n = 1
+                    for frame in frame_duration:
+                        animation_frame_id = nome_animacao + str(n)
+                        img_loc = path + '/' + animation_frame_id + '.png'
+                        imagem_animacao = pygame.image.load(img_loc)
+                        imagem_animacao = pygame.transform.scale(imagem_animacao, (137, 150))
+                        animation_frames[animation_frame_id] = imagem_animacao.copy()
+                        for i in range(frame):
+                            animation_frame_data.append(animation_frame_id)
+                        n += 1
+                    return animation_frame_data
+
+                def chance_action(action_var, frame, new_value):
+                    if action_var != new_value:
+                        action_var = new_value
+                        frame = 0
+                    return action_var, frame
+
+                animation_database = {}
+
+                animation_database['parada'] = load_animations('Morte_animations/Morteparada', [15, 15, 15])
+
+                morte_action = 'idle'
+                morte_frame = 0
+                morte_flip = False
+
+                textofrase = fontefrase.render("Ou se morre como herói, ou vive-se o bastante para se tornar o vilão.",
+                                               True, (255, 255, 255))
+                textonome = fontenome.render("Harvey Dent.", True, (255, 255, 255))
+
+                while True:
+                    janela.fill((25, 33, 23))
+                    janela.blit(arvore, (300, -50))
+                    janela.blit(morte, (550, 330))
+                    janela.blit(restart, (350, 550))
+                    janela.blit(voltar_menu, (600, 550))
+                    janela.blit(textofrase, (350, 500))
+                    janela.blit(textonome, (760, 530))
+
+                    morte_action, morte_frame = chance_action(morte_action, morte_frame, 'parada')
+
+                    morte_frame += 1
+                    if morte_frame >= len(animation_database[morte_action]):
+                        morte_frame = 0
+                    morte_image_id = animation_database[morte_action][morte_frame]
+                    morte_image = animation_frames[morte_image_id]
+                    zx = 0
+                    zy = 0
+                    janela.blit(pygame.transform.flip(morte_image, morte_flip, False), (470, 300))
+
+                    for event in pygame.event.get():
+                        if event.type == QUIT:
+                            pygame.quit()
+                        elif event.type == pygame.MOUSEBUTTONDOWN:
+                            zx, zy = pygame.mouse.get_pos()
+                            if zx >= 350 and zx <= 550 and zy >= 550 and zy <= 650:
+                                state = "Fase1"
+                                return state
+                            if zx >= 600 and zx <= 800 and zy >= 550 and zy <= 650:
+                                state = "Menu"
+                                mixer.music.unload()
+                                mixer.music.load("musicamenu.mp3")
+                                mixer.music.play(-1)
+                                mixer.music.set_volume(0.5)
+                                return state
+
+                    pygame.display.update()
             else:
                 contador_restart += 1
 
@@ -899,11 +1000,13 @@ def Fase1(state):
                         movimento_esquerda = True
                     if event.key == K_p:
                         bater = True
-                        Somespada.play()
+                        if somrodando == True:
+                            Somespada.play()
                     if event.key == K_SPACE:
                         if tempo_no_ar < 6:
                             movimento_vertical = -13
-                            Sompulo.play()
+                            if somrodando == True:
+                                Sompulo.play()
 
                 if event.type == KEYUP:
                     if event.key == K_d:
@@ -926,6 +1029,14 @@ def Fase1(state):
                                 musica = pygame.image.load("colcheia.png")
                                 janela.blit(musica, (525, 250))
 
+                            if somrodando == True:
+                                som = pygame.image.load("somoff.png")
+                                janela.blit(som, (665, 250))
+
+                            elif somrodando == False:
+                                som = pygame.image.load("somon.png")
+                                janela.blit(som, (765, 250))
+
                             for event in pygame.event.get():
                                 if event.type == pygame.QUIT:
                                     pygame.quit()
@@ -941,6 +1052,12 @@ def Fase1(state):
                                         pygame.display.update()
                                         musicarodando = True
 
+                                    if somrodando == True and mx >= 665 and mx <= 735 and my >= 250 and my <= 420:
+                                        somrodando = False
+
+                                    if somrodando == False and mx >= 765 and mx <= 835 and my >= 250 and my <= 420:
+                                        somrodando = True
+
                                     if mx >= 360 and mx <= 860 and my >= 480 and my <= 580:
                                         mixer.music.unload()
                                         mixer.music.load("musicamenu.mp3")
@@ -949,8 +1066,9 @@ def Fase1(state):
                                         state = "Menu"
                                         return state
 
-                                    # if mx >= 360 and mx <= 860 and my >= 360 and my <= 460:
-                                    # reiniciar fase
+                                    if mx >= 360 and mx <= 860 and my >= 360 and my <= 460:
+                                        state = "Fase1"
+                                        return state
 
                                     if mx >= 360 and mx <= 860 and my >= 110 and my <= 210:
                                         varpause = False

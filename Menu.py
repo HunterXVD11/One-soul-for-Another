@@ -36,6 +36,7 @@ def Menu(state):
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mx, my = pygame.mouse.get_pos()
                 print(mx,my)
+
                 if mx >= 0 and mx <= 300 and my >= 350 and my < 425:
                     mixer.music.unload()
                     mixer.music.load("musicafase1.mp3")
@@ -52,7 +53,9 @@ def Menu(state):
 
                 if mx >= 0 and mx<= 300 and my >= 500 and my < 575:
                     state = "creditos"
+                    pygame.display.update()
                     return state
                 if mx >= 0 and mx<= 300 and my >= 575 and my < 650:
                     pygame.quit()
+
         pygame.display.update()
