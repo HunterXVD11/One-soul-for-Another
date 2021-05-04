@@ -9,7 +9,6 @@ import move
 
 def Fase1(state):
     pygame.init()
-
     fonte = pygame.font.Font('freesansbold.ttf', 45)
     clock = pygame.time.Clock()
     janela_largura = 1200
@@ -18,7 +17,7 @@ def Fase1(state):
     pygame.display.set_caption('One soul for another')
 
     player_rect = pygame.Rect(1000, 400, 87, 100)
-    cenario = pygame.image.load("cenario.png")
+    cenario = pygame.image.load("cenario (2).jpg")
     cenario = pygame.transform.scale(cenario,(1200, 675))
     tile_tamanho = 50
 
@@ -361,6 +360,11 @@ def Fase1(state):
         janela.fill((146,244,255))
         janela.blit(cenario,(0,0))
         janela.blit(vila,(0 - scroll[0],-170 - scroll[1]))
+
+
+        print("clock.tick:", clock.tick())
+        print("clock.get_fps", clock.get_fps())
+
 
         v = 1000
         for c in range(19):
@@ -980,7 +984,6 @@ def Fase1(state):
 
             fontefrase = pygame.font.Font('freesansbold.ttf', 15)
             fontenome = pygame.font.Font('freesansbold.ttf', 10)
-            clock = pygame.time.Clock()
             janela_largura = 1200
             janela_altura = 675
             janela = pygame.display.set_mode((janela_largura, janela_altura))
@@ -1085,8 +1088,6 @@ def Fase1(state):
             if player_rect.colliderect(portao_rect):
                 janela.blit(vitoria, (350, 200))
 
-        print(player_rect.x)
-        print(player_rect.y)
         if game_over == False:
             for event in pygame.event.get():
                 if event.type == QUIT:
@@ -1172,6 +1173,6 @@ def Fase1(state):
                                     if mx >= 360 and mx <= 860 and my >= 110 and my <= 210:
                                         varpause = False
                             pygame.display.update()
-
-        pygame.display.update()
         clock.tick(60)
+        pygame.display.update()
+

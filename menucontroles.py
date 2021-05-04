@@ -6,7 +6,7 @@ from PPlay.sprite import *
 from PPlay.gameimage import *
 import random
 
-
+clock = pygame.time.Clock()
 pygame.init()
 janela_largura = 1200
 janela_altura = 675
@@ -16,6 +16,9 @@ def menucontroles(state):
     controlesimg = pygame.image.load("menucontroles.png")
     janela.blit(controlesimg, (0, 0))
     while True:
+        print("clock.tick:", clock.tick())
+        print("clock.get_fps", clock.get_fps())
+        clock.tick(60)
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
