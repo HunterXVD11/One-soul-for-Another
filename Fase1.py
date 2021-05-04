@@ -40,6 +40,7 @@ def Fase1(state):
     pause_img = pygame.image.load("pauseimg.png")
 
     #Parte Grama
+    morte_mapa = pygame.image.load("parede.png")
     vila = pygame.image.load("vilarejo.png")
     vila = pygame.transform.scale(vila, (900,675))
     casa = pygame.image.load("casavila.png")
@@ -47,6 +48,8 @@ def Fase1(state):
     carruagem = pygame.image.load("carruagem.png")
     carruagem = pygame.transform.scale(carruagem, (170, 140))
     parede = pygame.image.load("parede.png")
+    monstro_rect = pygame.image.load("parede.png")
+    monstro_rect = pygame.transform.scale(monstro_rect,(60,70))
     arvore = pygame.image.load("Arvore.png")
     arvore = pygame.transform.scale(arvore,(300, 262))
     chao_padrao_img = pygame.image.load("chão padrão.png")
@@ -90,6 +93,7 @@ def Fase1(state):
     monstro_flip = False
     bater = False
     tomar_hit = False
+    tela_gameover = False
     bater_monstro0 = False
     bater_monstro1 = False
     bater_monstro2 = False
@@ -181,7 +185,7 @@ def Fase1(state):
                   [2,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,3,3,2,2,2,2,2,2,2,2,2,3,2,3,2,2,2,2,2,3,2,2,2,2,3,2,2,2,2,2,2,2,3,2,2,3,2,3,2,2,2,2,2,3,2,2,2,2,3,2,2,2,2,2,2,2,3,2,2,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,2,3,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,3,2,2,2,2,2,2,2,2,2,2,3,2,3,2,2,2,2,2,2,2,2,2,],
                   [2,3,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,3,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,3,2,2,3,2,2,2,3,2,3,2,2,2,2,2,3,2,2,2,2,3,2,2,2,2,2,2,2,3,2,2,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,],
                   [2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,3,2,2,3,2,2,2,3,2,3,2,2,2,2,2,3,2,2,2,2,3,2,2,2,2,2,2,2,3,2,2,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,2,2,3,2,2,2,2,2,2,2,3,2,2,2,2,2,2,3,2,2,2,2,2,2,3,2,2,2,2,3,2,2,2,3,2,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,],
-                  [2,2,3,2,2,2,3,3,3,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,3,2,2,2,2,2,3,2,2,2,2,2,2,2,3,2,2,3,2,2,2,2,2,2,3,2,2,2,2,2,3,2,2,2,2,2,2,2,3,2,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,2,2,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,3,2,2,2,3,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,]]
+                  [2,2,3,2,2,2,3,3,3,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,3,2,2,2,2,2,3,2,2,2,2,2,2,2,3,2,2,3,2,2,2,2,2,2,3,2,2,2,2,2,3,2,2,2,2,2,2,2,3,2,7,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,11,2,2,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,3,2,2,2,3,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,]]
 
     global animation_frames
     animation_frames = {}
@@ -349,6 +353,7 @@ def Fase1(state):
         janela.blit(arvore, (6600 - scroll[0], 240 - scroll[1]))
 
         tile_rects = []
+        morte_rects = []
 
         y=0
         for linha in world_data:
@@ -406,6 +411,10 @@ def Fase1(state):
                     parede = pygame.transform.scale(parede,(tile_tamanho, tile_tamanho))
                     janela.blit(parede, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
                     tile_rects.append(pygame.Rect(x * tile_tamanho, y * tile_tamanho, tile_tamanho, tile_tamanho))
+                if tile == 25:
+                    morte_mapa = pygame.transform.scale(morte_mapa,(tile_tamanho, tile_tamanho))
+                    janela.blit(morte_mapa, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
+                    morte_rects.append(pygame.Rect(x * tile_tamanho, y * tile_tamanho, tile_tamanho, tile_tamanho))
 
                 #Parte Caverna
                 if tile == 12:
@@ -583,9 +592,9 @@ def Fase1(state):
                 monstro_action0, monstro_frame0 = chance_action_monstro(monstro_action0, monstro_frame0, 'correndo')
 
             janela.blit(pygame.transform.flip(monstro0, monstro_flip, False), (2000 - scroll[0] + movimento_monstro0, 425 - scroll[1] - 15))
-            monstro_rect0 = monstro0.get_rect()
-            monstro_rect0.x = 2000 + movimento_monstro0
-            monstro_rect0.y = 425
+            monstro_rect0 = monstro_rect.get_rect()
+            monstro_rect0.x = 2040 + movimento_monstro0
+            monstro_rect0.y = 440
             if player_rect.colliderect(monstro_rect0) and contador_hit >= 100 and bater == False and game_over == False and morreu0 == False:
                 bater_monstro0 = True
                 tomar_hit = True
@@ -619,9 +628,9 @@ def Fase1(state):
             if contador1 == 0 and bater_monstro1 == False:
                 monstro_action1, monstro_frame1 = chance_action_monstro(monstro_action1, monstro_frame1, 'correndo')
             janela.blit(pygame.transform.flip(monstro1, monstro_flip, False), (3180 - scroll[0] + movimento_monstro1, 275 - scroll[1] - 15))
-            monstro_rect1 = monstro1.get_rect()
-            monstro_rect1.x = 3180 + movimento_monstro1
-            monstro_rect1.y = 275
+            monstro_rect1 = monstro_rect.get_rect()
+            monstro_rect1.x = 3220 + movimento_monstro1
+            monstro_rect1.y = 290
 
             if player_rect.colliderect(monstro_rect1) and contador_hit >= 100 and bater == False and game_over == False and morreu1 == False:
                 bater_monstro1 = True
@@ -656,9 +665,9 @@ def Fase1(state):
             if contador2 == 0 and bater_monstro2 == False:
                 monstro_action2, monstro_frame2 = chance_action_monstro(monstro_action2, monstro_frame2, 'correndo')
             janela.blit(pygame.transform.flip(monstro2, monstro_flip, False), (2870 - scroll[0] + movimento_monstro2, 425 - scroll[1] - 15))
-            monstro_rect2 = monstro2.get_rect()
-            monstro_rect2.x = 2870 + movimento_monstro2
-            monstro_rect2.y = 425
+            monstro_rect2 = monstro_rect.get_rect()
+            monstro_rect2.x = 2910 + movimento_monstro2
+            monstro_rect2.y = 440
             contador_hit += 1
             if player_rect.colliderect(monstro_rect2) and contador_hit >= 100 and bater == False and game_over == False and morreu2 == False:
                 bater_monstro2 = True
@@ -693,9 +702,9 @@ def Fase1(state):
             if contador3 == 0 and bater_monstro3 == False:
                 monstro_action3, monstro_frame3 = chance_action_monstro(monstro_action3, monstro_frame3, 'correndo')
             janela.blit(pygame.transform.flip(monstro3, monstro_flip, False), (3560 - scroll[0] + movimento_monstro3, 425 - scroll[1] - 15))
-            monstro_rect3 = monstro3.get_rect()
-            monstro_rect3.x = 3560 + movimento_monstro3
-            monstro_rect3.y = 425
+            monstro_rect3 = monstro_rect.get_rect()
+            monstro_rect3.x = 3600 + movimento_monstro3
+            monstro_rect3.y = 440
 
             if player_rect.colliderect(monstro_rect3) and contador_hit >= 100 and bater == False and game_over == False and morreu3 == False:
                 bater_monstro3 = True
@@ -731,9 +740,9 @@ def Fase1(state):
             if contador4 == 0 and bater_monstro4 == False:
                 monstro_action4, monstro_frame4 = chance_action_monstro(monstro_action4, monstro_frame4, 'correndo')
             janela.blit(pygame.transform.flip(monstro4, monstro_flip, False), (5700 - scroll[0] + movimento_monstro4, 325 - scroll[1] - 15))
-            monstro_rect4 = monstro4.get_rect()
-            monstro_rect4.x = 5700 + movimento_monstro4
-            monstro_rect4.y = 325
+            monstro_rect4 = monstro_rect.get_rect()
+            monstro_rect4.x = 5740 + movimento_monstro4
+            monstro_rect4.y = 340
 
             if player_rect.colliderect(monstro_rect4) and contador_hit >= 100 and bater == False and game_over == False and morreu4 == False:
                 bater_monstro4 = True
@@ -769,9 +778,9 @@ def Fase1(state):
             if contador5 == 0 and bater_monstro5 == False:
                 monstro_action5, monstro_frame5 = chance_action_monstro(monstro_action5, monstro_frame5, 'correndo')
             janela.blit(pygame.transform.flip(monstro5, monstro_flip, False), (6600 - scroll[0] + movimento_monstro5, 425 - scroll[1] - 15))
-            monstro_rect5 = monstro5.get_rect()
-            monstro_rect5.x = 6600 + movimento_monstro5
-            monstro_rect5.y = 425
+            monstro_rect5 = monstro_rect.get_rect()
+            monstro_rect5.x = 6640 + movimento_monstro5
+            monstro_rect5.y = 440
 
             if player_rect.colliderect(monstro_rect5) and contador_hit >= 100 and bater == False and game_over == False and morreu5 == False:
                 bater_monstro5 = True
@@ -806,9 +815,9 @@ def Fase1(state):
             if contador6 == 0 and bater_monstro6 == False:
                 monstro_action6, monstro_frame6 = chance_action_monstro(monstro_action6, monstro_frame6, 'correndo')
             janela.blit(pygame.transform.flip(monstro6, monstro_flip, False), (7750 - scroll[0] + movimento_monstro6, 425 - scroll[1] - 15))
-            monstro_rect6 = monstro6.get_rect()
-            monstro_rect6.x = 7750 + movimento_monstro6
-            monstro_rect6.y = 425
+            monstro_rect6 = monstro_rect.get_rect()
+            monstro_rect6.x = 7790 + movimento_monstro6
+            monstro_rect6.y = 440
             if player_rect.colliderect(monstro_rect6) and contador_hit >= 100 and bater == False and game_over == False and morreu6 == False:
                 bater_monstro6 = True
                 tomar_hit = True
@@ -872,109 +881,115 @@ def Fase1(state):
         if contador == 200:
             contador = 0
 
+        for tile in morte_rects:
+            if player_rect.colliderect(tile):
+                tela_gameover = True
+
         if len(listavida) == 0:
             game_over = True
             if contador_restart > 100:
-                pygame.init()
-
-                fontefrase = pygame.font.Font('freesansbold.ttf', 15)
-                fontenome = pygame.font.Font('freesansbold.ttf', 10)
-                clock = pygame.time.Clock()
-                janela_largura = 1200
-                janela_altura = 675
-                janela = pygame.display.set_mode((janela_largura, janela_altura))
-                pygame.display.set_caption('One soul for another')
-
-                # load images
-                arvore = pygame.image.load('arvoremorte.png')
-                arvore = pygame.transform.scale(arvore, (600, 650))
-
-                morte = pygame.image.load('Player_animations/Kaorimorrendo/Kaorimorrendo11.png')
-                morte = pygame.transform.scale(morte, (130, 120))
-
-                restart = pygame.image.load('recomecar_restart.png')
-                restart = pygame.transform.scale(restart, (230, 109))
-
-                voltar_menu = pygame.image.load('voltar_ao_menu_restart.png')
-                voltar_menu = pygame.transform.scale(voltar_menu, (230, 109))
-
-                animation_frames
-                animation_frames = {}
-
-                def load_animations(path, frame_duration):
-                    global animation_frames
-                    nome_animacao = path.split('/')[-1]
-                    animation_frame_data = []
-                    n = 1
-                    for frame in frame_duration:
-                        animation_frame_id = nome_animacao + str(n)
-                        img_loc = path + '/' + animation_frame_id + '.png'
-                        imagem_animacao = pygame.image.load(img_loc)
-                        imagem_animacao = pygame.transform.scale(imagem_animacao, (137, 150))
-                        animation_frames[animation_frame_id] = imagem_animacao.copy()
-                        for i in range(frame):
-                            animation_frame_data.append(animation_frame_id)
-                        n += 1
-                    return animation_frame_data
-
-                def chance_action(action_var, frame, new_value):
-                    if action_var != new_value:
-                        action_var = new_value
-                        frame = 0
-                    return action_var, frame
-
-                animation_database = {}
-
-                animation_database['parada'] = load_animations('Morte_animations/Morteparada', [15, 15, 15])
-
-                morte_action = 'idle'
-                morte_frame = 0
-                morte_flip = False
-
-                textofrase = fontefrase.render("Ou se morre como herói, ou vive-se o bastante para se tornar o vilão.",
-                                               True, (255, 255, 255))
-                textonome = fontenome.render("Harvey Dent.", True, (255, 255, 255))
-
-                while True:
-                    janela.fill((25, 33, 23))
-                    janela.blit(arvore, (300, -50))
-                    janela.blit(morte, (550, 330))
-                    janela.blit(restart, (350, 550))
-                    janela.blit(voltar_menu, (600, 550))
-                    janela.blit(textofrase, (350, 500))
-                    janela.blit(textonome, (760, 530))
-
-                    morte_action, morte_frame = chance_action(morte_action, morte_frame, 'parada')
-
-                    morte_frame += 1
-                    if morte_frame >= len(animation_database[morte_action]):
-                        morte_frame = 0
-                    morte_image_id = animation_database[morte_action][morte_frame]
-                    morte_image = animation_frames[morte_image_id]
-                    zx = 0
-                    zy = 0
-                    janela.blit(pygame.transform.flip(morte_image, morte_flip, False), (470, 300))
-
-                    for event in pygame.event.get():
-                        if event.type == QUIT:
-                            pygame.quit()
-                        elif event.type == pygame.MOUSEBUTTONDOWN:
-                            zx, zy = pygame.mouse.get_pos()
-                            if zx >= 350 and zx <= 550 and zy >= 550 and zy <= 650:
-                                state = "Fase1"
-                                return state
-                            if zx >= 600 and zx <= 800 and zy >= 550 and zy <= 650:
-                                state = "Menu"
-                                mixer.music.unload()
-                                mixer.music.load("musicamenu.mp3")
-                                mixer.music.play(-1)
-                                mixer.music.set_volume(0.5)
-                                return state
-
-                    pygame.display.update()
+                tela_gameover = True
             else:
                 contador_restart += 1
 
+        if tela_gameover == True:
+            pygame.init()
+
+            fontefrase = pygame.font.Font('freesansbold.ttf', 15)
+            fontenome = pygame.font.Font('freesansbold.ttf', 10)
+            clock = pygame.time.Clock()
+            janela_largura = 1200
+            janela_altura = 675
+            janela = pygame.display.set_mode((janela_largura, janela_altura))
+            pygame.display.set_caption('One soul for another')
+
+            # load images
+            arvore = pygame.image.load('arvoremorte.png')
+            arvore = pygame.transform.scale(arvore, (600, 650))
+
+            morte = pygame.image.load('Player_animations/Kaorimorrendo/Kaorimorrendo11.png')
+            morte = pygame.transform.scale(morte, (130, 120))
+
+            restart = pygame.image.load('recomecar_restart.png')
+            restart = pygame.transform.scale(restart, (230, 109))
+
+            voltar_menu = pygame.image.load('voltar_ao_menu_restart.png')
+            voltar_menu = pygame.transform.scale(voltar_menu, (230, 109))
+
+            animation_frames
+            animation_frames = {}
+
+            def load_animations(path, frame_duration):
+                global animation_frames
+                nome_animacao = path.split('/')[-1]
+                animation_frame_data = []
+                n = 1
+                for frame in frame_duration:
+                    animation_frame_id = nome_animacao + str(n)
+                    img_loc = path + '/' + animation_frame_id + '.png'
+                    imagem_animacao = pygame.image.load(img_loc)
+                    imagem_animacao = pygame.transform.scale(imagem_animacao, (137, 150))
+                    animation_frames[animation_frame_id] = imagem_animacao.copy()
+                    for i in range(frame):
+                        animation_frame_data.append(animation_frame_id)
+                    n += 1
+                return animation_frame_data
+
+            def chance_action(action_var, frame, new_value):
+                if action_var != new_value:
+                    action_var = new_value
+                    frame = 0
+                return action_var, frame
+
+            animation_database = {}
+
+            animation_database['parada'] = load_animations('Morte_animations/Morteparada', [15, 15, 15])
+
+            morte_action = 'idle'
+            morte_frame = 0
+            morte_flip = False
+
+            textofrase = fontefrase.render("Ou se morre como herói, ou vive-se o bastante para se tornar o vilão.",
+                                           True, (255, 255, 255))
+            textonome = fontenome.render("Harvey Dent.", True, (255, 255, 255))
+
+            while True:
+                janela.fill((25, 33, 23))
+                janela.blit(arvore, (300, -50))
+                janela.blit(morte, (550, 330))
+                janela.blit(restart, (350, 550))
+                janela.blit(voltar_menu, (600, 550))
+                janela.blit(textofrase, (350, 500))
+                janela.blit(textonome, (760, 530))
+
+                morte_action, morte_frame = chance_action(morte_action, morte_frame, 'parada')
+
+                morte_frame += 1
+                if morte_frame >= len(animation_database[morte_action]):
+                    morte_frame = 0
+                morte_image_id = animation_database[morte_action][morte_frame]
+                morte_image = animation_frames[morte_image_id]
+                zx = 0
+                zy = 0
+                janela.blit(pygame.transform.flip(morte_image, morte_flip, False), (470, 300))
+
+                for event in pygame.event.get():
+                    if event.type == QUIT:
+                        pygame.quit()
+                    elif event.type == pygame.MOUSEBUTTONDOWN:
+                        zx, zy = pygame.mouse.get_pos()
+                        if zx >= 350 and zx <= 550 and zy >= 550 and zy <= 650:
+                            state = "Fase1"
+                            return state
+                        if zx >= 600 and zx <= 800 and zy >= 550 and zy <= 650:
+                            state = "Menu"
+                            mixer.music.unload()
+                            mixer.music.load("musicamenu.mp3")
+                            mixer.music.play(-1)
+                            mixer.music.set_volume(0.5)
+                            return state
+
+                pygame.display.update()
         # Desenha portão
         if num_monstros_mortos == 7:
             janela.blit(frase_portao, (300, 20))
