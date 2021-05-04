@@ -32,6 +32,7 @@ def Fase1(state):
     Somespada = pygame.mixer.Sound("espadada2.mp3")
     Somdano = pygame.mixer.Sound("Kaorimorrendo.mp3")
     Sominimigo = pygame.mixer.Sound("goblin.mp3")
+    Sommorte = pygame.mixer.Sound("mortesound.mp3")
 
     #Load Images
 
@@ -918,6 +919,7 @@ def Fase1(state):
 
         if tela_gameover == True:
             pygame.init()
+            pygame.mixer.music.unload()
 
             fontefrase = pygame.font.Font('freesansbold.ttf', 15)
             fontenome = pygame.font.Font('freesansbold.ttf', 10)
@@ -926,7 +928,8 @@ def Fase1(state):
             janela_altura = 675
             janela = pygame.display.set_mode((janela_largura, janela_altura))
             pygame.display.set_caption('One soul for another')
-
+            if somrodando == True:
+                Sommorte.play()
             # load images
             arvore = pygame.image.load('arvoremorte.png')
             arvore = pygame.transform.scale(arvore, (600, 650))
@@ -1037,7 +1040,7 @@ def Fase1(state):
                         movimento_direita = True
                     if event.key == K_a:
                         movimento_esquerda = True
-                    if event.key == K_p:
+                    if event.key == K_k:
                         bater = True
                         if somrodando == True:
                             Somespada.play()
@@ -1052,9 +1055,9 @@ def Fase1(state):
                         movimento_direita = False
                     if event.key == K_a:
                         movimento_esquerda = False
-                    if event.key == K_p:
+                    if event.key == K_k:
                         bater = False
-                    if event.key == K_l:
+                    if event.key == K_ESCAPE:
                         varpause = True
                         while varpause:
                             janela3 = janela.blit(pause_img, (0, 0))
