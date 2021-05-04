@@ -17,6 +17,8 @@ def Creditos(state):
     while True:
         mx = 0
         my = 0
+        print("clock.tick:", clock.tick())
+        print("clock.get_fps", clock.get_fps())
         janela.fill((0, 0, 0))
         janela.blit(credito, (150, credito_altura))
         if credito_altura > - 1250:
@@ -38,4 +40,5 @@ def Creditos(state):
                 pygame.quit()
                 sys.exit()
 
+        clock.tick(60)
         pygame.display.update()

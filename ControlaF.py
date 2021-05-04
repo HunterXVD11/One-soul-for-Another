@@ -10,8 +10,9 @@ import menucontroles
 import Historia
 import Fase1
 import Creditos
+import Fase2
 
-state = "Menu"
+state = "Fase1"
 
 while True:
 
@@ -29,3 +30,6 @@ while True:
 
     elif state == "Fase1":
         state = Fase1.Fase1("Fase1")
+
+    elif state == "Fase2":
+        state = Fase2.Fase2("Fase2")

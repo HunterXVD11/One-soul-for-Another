@@ -19,9 +19,12 @@ jogar = pygame.image.load("jogar.png")
 controles = pygame.image.load("controles.png")
 creditos = pygame.image.load("creditos.png")
 sair = pygame.image.load("sair.png")
+clock = pygame.time.Clock()
 
 def Menu(state):
     while True:
+        print("clock.tick:", clock.tick())
+        print("clock.get_fps", clock.get_fps())
         fundo_menu_img = pygame.image.load("FundoMenuTeste.jpg")
         janela.blit(fundo_menu_img, (0, 0))
         janela.blit(jogar, (0, 350))
@@ -57,5 +60,5 @@ def Menu(state):
                     return state
                 if mx >= 0 and mx<= 300 and my >= 575 and my < 650:
                     pygame.quit()
-
+        clock.tick(60)
         pygame.display.update()
