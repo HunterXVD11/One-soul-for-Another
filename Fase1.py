@@ -1173,5 +1173,7 @@ def Fase1(state):
                                         varpause = False
                             pygame.display.update()
 
+        print("clock.tick:", clock.tick())
+        print("clock.get_fps", clock.get_fps())
         pygame.display.update()
         clock.tick(60)
