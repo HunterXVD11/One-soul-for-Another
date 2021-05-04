@@ -31,6 +31,7 @@ def Fase1(state):
     Sompulo = pygame.mixer.Sound("jump.mp3")
     Somespada = pygame.mixer.Sound("espadada2.mp3")
     Somdano = pygame.mixer.Sound("Kaorimorrendo.mp3")
+    Sominimigo = pygame.mixer.Sound("goblin.mp3")
 
     #Load Images
 
@@ -607,6 +608,8 @@ def Fase1(state):
                 contador0 = 1
                 morreu0 = True
                 monstro_action0, monstro_frame0 = chance_action_monstro(monstro_action0, monstro_frame0, 'morrendo')
+                if somrodando == True:
+                    Sominimigo.play()
                 if contadormonstromorte0 != 1:
                     num_monstros_mortos += 1
                     contadormonstromorte0 = 1
@@ -644,6 +647,8 @@ def Fase1(state):
                 contador1 = 1
                 morreu1 = True
                 monstro_action1, monstro_frame1 = chance_action_monstro(monstro_action1, monstro_frame1, 'morrendo')
+                if somrodando == True:
+                    Sominimigo.play()
                 if contadormonstromorte1 != 1:
                     num_monstros_mortos += 1
                     contadormonstromorte1 = 1
@@ -681,6 +686,8 @@ def Fase1(state):
                 contador2 = 1
                 morreu2 = True
                 monstro_action2, monstro_frame2 = chance_action_monstro(monstro_action2, monstro_frame2, 'morrendo')
+                if somrodando == True:
+                    Sominimigo.play()
                 if contadormonstromorte2 != 1:
                     num_monstros_mortos += 1
                     contadormonstromorte2 = 1
@@ -718,6 +725,8 @@ def Fase1(state):
                 contador3 = 1
                 morreu3 = True
                 monstro_action3, monstro_frame3 = chance_action_monstro(monstro_action3, monstro_frame3, 'morrendo')
+                if somrodando == True:
+                    Sominimigo.play()
                 if contadormonstromorte3 != 1:
                     num_monstros_mortos += 1
                     contadormonstromorte3 = 1
@@ -756,6 +765,8 @@ def Fase1(state):
                 contador4 = 1
                 morreu4 = True
                 monstro_action4, monstro_frame4 = chance_action_monstro(monstro_action4, monstro_frame4, 'morrendo')
+                if somrodando == True:
+                    Sominimigo.play()
                 if contadormonstromorte4 != 1:
                     num_monstros_mortos += 1
                     contadormonstromorte4 = 1
@@ -794,6 +805,8 @@ def Fase1(state):
                 contador5 = 1
                 morreu5 = True
                 monstro_action5, monstro_frame5 = chance_action_monstro(monstro_action5, monstro_frame5, 'morrendo')
+                if somrodando == True:
+                    Sominimigo.play()
                 if contadormonstromorte5 != 1:
                     num_monstros_mortos += 1
                     contadormonstromorte5 = 1
@@ -830,6 +843,8 @@ def Fase1(state):
                 contador6 = 1
                 morreu6 = True
                 monstro_action6, monstro_frame6 = chance_action_monstro(monstro_action6, monstro_frame6, 'morrendo')
+                if somrodando == True:
+                    Sominimigo.play()
                 if contadormonstromorte6 != 1:
                     num_monstros_mortos += 1
                     contadormonstromorte6 = 1
