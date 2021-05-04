@@ -20,12 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8fc2a23-1fe8-4d9a-aae7-2f1dbc55638e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Demo/Demo/Space_Invaders.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fase1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Fase1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../aula1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
