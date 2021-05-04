@@ -32,6 +32,7 @@ def Fase1(state):
     Somespada = pygame.mixer.Sound("espadada2.mp3")
     Somdano = pygame.mixer.Sound("Kaorimorrendo.mp3")
     Sominimigo = pygame.mixer.Sound("goblin.mp3")
+    Sommorte = pygame.mixer.Sound("mortesound.mp3")
 
     #Load Images
 
@@ -665,15 +666,18 @@ def Fase1(state):
                 contador0 = 1
                 morreu0 = True
                 monstro_action0, monstro_frame0 = chance_action_monstro(monstro_action0, monstro_frame0, 'morrendo')
-                if somrodando == True:
-                    Sominimigo.play()
+
                 if contadormonstromorte0 != 1:
                     num_monstros_mortos += 1
                     contadormonstromorte0 = 1
             if morreu0 == True:
                 contadorM0 += 1
+                if contadorM0 == 8:
+                    if somrodando == True:
+                        Sominimigo.play()
                 if contadorM0 >= 30:
                     monstro_death_0 = True
+
             if bater_monstro0 == True:
                 monstro_action0, monstro_frame0 = chance_action_monstro(monstro_action0, monstro_frame0, 'atacando')
                 contadorbater_monstro += 1
@@ -704,13 +708,14 @@ def Fase1(state):
                 contador1 = 1
                 morreu1 = True
                 monstro_action1, monstro_frame1 = chance_action_monstro(monstro_action1, monstro_frame1, 'morrendo')
-                if somrodando == True:
-                    Sominimigo.play()
                 if contadormonstromorte1 != 1:
                     num_monstros_mortos += 1
                     contadormonstromorte1 = 1
             if morreu1 == True:
                 contadorM1 += 1
+                if contadorM1 == 8:
+                    if somrodando == True:
+                        Sominimigo.play()
                 if contadorM1 >= 30:
                     monstro_death_1 = True
             if bater_monstro1 == True:
@@ -743,13 +748,14 @@ def Fase1(state):
                 contador2 = 1
                 morreu2 = True
                 monstro_action2, monstro_frame2 = chance_action_monstro(monstro_action2, monstro_frame2, 'morrendo')
-                if somrodando == True:
-                    Sominimigo.play()
                 if contadormonstromorte2 != 1:
                     num_monstros_mortos += 1
                     contadormonstromorte2 = 1
             if morreu2 == True:
                 contadorM2 += 1
+                if contadorM2 == 8:
+                    if somrodando == True:
+                        Sominimigo.play()
                 if contadorM2 >= 30:
                     monstro_death_2 = True
             if bater_monstro2 == True:
@@ -782,13 +788,14 @@ def Fase1(state):
                 contador3 = 1
                 morreu3 = True
                 monstro_action3, monstro_frame3 = chance_action_monstro(monstro_action3, monstro_frame3, 'morrendo')
-                if somrodando == True:
-                    Sominimigo.play()
                 if contadormonstromorte3 != 1:
                     num_monstros_mortos += 1
                     contadormonstromorte3 = 1
             if morreu3 == True:
                 contadorM3 += 1
+                if contadorM3 == 8:
+                    if somrodando == True:
+                        Sominimigo.play()
                 if contadorM3 >= 30:
                     monstro_death_3 = True
             if bater_monstro3 == True:
@@ -822,13 +829,14 @@ def Fase1(state):
                 contador4 = 1
                 morreu4 = True
                 monstro_action4, monstro_frame4 = chance_action_monstro(monstro_action4, monstro_frame4, 'morrendo')
-                if somrodando == True:
-                    Sominimigo.play()
                 if contadormonstromorte4 != 1:
                     num_monstros_mortos += 1
                     contadormonstromorte4 = 1
             if morreu4 == True:
                 contadorM4 += 1
+                if contadorM4 == 8:
+                    if somrodando == True:
+                        Sominimigo.play()
                 if contadorM4 >= 30:
                     monstro_death_4 = True
             if bater_monstro4 == True:
@@ -862,13 +870,14 @@ def Fase1(state):
                 contador5 = 1
                 morreu5 = True
                 monstro_action5, monstro_frame5 = chance_action_monstro(monstro_action5, monstro_frame5, 'morrendo')
-                if somrodando == True:
-                    Sominimigo.play()
                 if contadormonstromorte5 != 1:
                     num_monstros_mortos += 1
                     contadormonstromorte5 = 1
             if morreu5 == True:
                 contadorM5 += 1
+                if contadorM5 == 8:
+                    if somrodando == True:
+                        Sominimigo.play()
                 if contadorM5 >= 30:
                     monstro_death_5 = True
             if bater_monstro5 == True:
@@ -900,13 +909,14 @@ def Fase1(state):
                 contador6 = 1
                 morreu6 = True
                 monstro_action6, monstro_frame6 = chance_action_monstro(monstro_action6, monstro_frame6, 'morrendo')
-                if somrodando == True:
-                    Sominimigo.play()
                 if contadormonstromorte6 != 1:
                     num_monstros_mortos += 1
                     contadormonstromorte6 = 1
             if morreu6 == True:
                 contadorM6 += 1
+                if contadorM6 == 8:
+                    if somrodando == True:
+                        Sominimigo.play()
                 if contadorM6 >= 30:
                     monstro_death_6 = True
             if bater_monstro6 == True:
@@ -966,6 +976,7 @@ def Fase1(state):
 
         if tela_gameover == True:
             pygame.init()
+            pygame.mixer.music.unload()
 
             fontefrase = pygame.font.Font('freesansbold.ttf', 15)
             fontenome = pygame.font.Font('freesansbold.ttf', 10)
@@ -974,7 +985,8 @@ def Fase1(state):
             janela_altura = 675
             janela = pygame.display.set_mode((janela_largura, janela_altura))
             pygame.display.set_caption('One soul for another')
-
+            if somrodando == True:
+                Sommorte.play()
             # load images
             arvore = pygame.image.load('arvoremorte.png')
             arvore = pygame.transform.scale(arvore, (600, 650))
@@ -1085,7 +1097,7 @@ def Fase1(state):
                         movimento_direita = True
                     if event.key == K_a:
                         movimento_esquerda = True
-                    if event.key == K_p:
+                    if event.key == K_k:
                         bater = True
                         if somrodando == True:
                             Somespada.play()
@@ -1100,9 +1112,9 @@ def Fase1(state):
                         movimento_direita = False
                     if event.key == K_a:
                         movimento_esquerda = False
-                    if event.key == K_p:
+                    if event.key == K_k:
                         bater = False
-                    if event.key == K_l:
+                    if event.key == K_ESCAPE:
                         varpause = True
                         while varpause:
                             janela3 = janela.blit(pause_img, (0, 0))
