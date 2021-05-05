@@ -12,7 +12,10 @@ import Fase1
 import Creditos
 import Fase2
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 96cc4b9cd13b360d433c13f0c9b45bfa72180e10
 state = "Fase2"
 
 while True:
