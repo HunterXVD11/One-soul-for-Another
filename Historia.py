@@ -31,7 +31,7 @@ def Historia(state):
             for event in pygame.event.get():
                 if event.type == KEYDOWN:
                     if event.key == K_RETURN:
-                        state = 'Fase1'
+                        state = 'Fase2'
                         return state
 
 
