@@ -16,9 +16,13 @@ mixer.music.load("musicamenu.mp3")
 mixer.music.play(-1)
 mixer.music.set_volume(0.1)
 jogar = pygame.image.load("jogar.png")
+jogaron = pygame.image.load("jogaron.png")
 controles = pygame.image.load("controles.png")
+controleson = pygame.image.load("controleson.png")
 creditos = pygame.image.load("creditos.png")
+creditoson = pygame.image.load("creditoson.png")
 sair = pygame.image.load("sair.png")
+sairon = pygame.image.load("sairon.png")
 clock = pygame.time.Clock()
 
 def Menu(state):
@@ -33,6 +37,15 @@ def Menu(state):
         janela.blit(sair, (0, 575))
         mx = 0
         my = 0
+        mouseposic = pygame.mouse.get_pos()
+        if mouseposic[0] >= 0 and mouseposic[0] <= 300 and mouseposic[1] >= 350 and mouseposic[1] < 425:
+            janela.blit(jogaron, (0, 350))
+        if mouseposic[0] >= 0 and mouseposic[0] <= 300 and mouseposic[1] >= 425 and mouseposic[1] < 500:
+            janela.blit(controleson, (0 ,425))
+        if mouseposic[0] >= 0 and mouseposic[0] <= 300 and mouseposic[1] >= 500 and mouseposic[1] < 575 :
+            janela.blit(creditoson, (0, 500))
+        if mouseposic[0] >= 0 and mouseposic[0] <= 300 and mouseposic[1] >= 575 and mouseposic[1] < 650 :
+            janela.blit(sairon, (0 , 575))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
