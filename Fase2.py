@@ -42,10 +42,17 @@ def Fase2(state):
     pause_img = pygame.image.load("pauseimg.png")
 
     #Parte Grama
+    castelo = pygame.image.load("castelo.png")
+    castelo = pygame.transform.scale(castelo,(1200,476))
+    entrada = pygame.image.load("entrada.png")
+    entrada = pygame.transform.scale(entrada, (251, 335))
     morte_mapa = pygame.image.load("parede.png")
     parede = pygame.image.load("parede.png")
     monstro_rect = pygame.image.load("parede.png")
     monstro_rect = pygame.transform.scale(monstro_rect,(110,80))
+    minhoca_rect = pygame.image.load("parede.png")
+    minhoca_rect = pygame.transform.scale(minhoca_rect, (73, 63))
+    minhoca_rect_dano = pygame.transform.scale(minhoca_rect, (35, 63))
     arvore = pygame.image.load("Arvore.png")
     arvore = pygame.transform.scale(arvore,(300, 262))
     chao_padrao_img = pygame.image.load("chão padrão.png")
@@ -58,21 +65,7 @@ def Fase2(state):
     chaoinferiormeio = pygame.image.load("Fase2_Tiles/chaoinferiormeio.png")
     chaoinferiordireita = pygame.image.load("Fase2_Tiles/chaoinferiordireita.png")
     chaoinferioresquerda = pygame.image.load("Fase2_Tiles/chaoinferioresquerda.png")
-
-    #Parte Caverna
-    fundo_caverna_img = pygame.image.load('fundo_caverna.jpg')
-    fundo_caverna2_img = pygame.image.load('fundo_caverna2.png')
-    fundo_caverna3_img = pygame.image.load('fundo_caverna3.png')
-    fundo_caverna4_img = pygame.image.load('fundo_caverna4.png')
-    fundo_caverna5_img = pygame.image.load('fundocaverna5.png')
-    fundo_caverna6_img = pygame.image.load('fundocaverna6.png')
-
-    tetocaverna1 = pygame.image.load("tetocaverna1.png")
-    tetocaverna2 = pygame.image.load("tetocaverna2.png")
-    tetocaverna3 = pygame.image.load("tetocaverna3.png")
-    tetocaverna4 = pygame.image.load("tetocaverna4.png")
-    tetocaverna5 = pygame.image.load("tetocaverna5.jpg")
-    tetocaverna6 = pygame.image.load("tetocaverna6.png")
+    chaocastelo = pygame.image.load("chaocastelo.png")
 
     contador_monstro = pygame.image.load("contador_monstros.png")
     contador_monstro = pygame.transform.scale(contador_monstro, (95, 52))
@@ -100,6 +93,14 @@ def Fase2(state):
     bater_monstro4 = False
     bater_monstro5 = False
     bater_monstro6 = False
+    bater_monstro7 = False
+    bater_monstro8 = False
+    bater_monstro9 = False
+    bater_monstro10 = False
+    bater_monstro11 = False
+    bater_monstro12 = False
+    bater_monstro13 = False
+    bater_monstro14 = False
     monstro_death_0 = False
     monstro_death_1 = False
     monstro_death_2 = False
@@ -107,6 +108,14 @@ def Fase2(state):
     monstro_death_4 = False
     monstro_death_5 = False
     monstro_death_6 = False
+    monstro_death_7 = False
+    monstro_death_8 = False
+    monstro_death_9 = False
+    monstro_death_10 = False
+    monstro_death_11 = False
+    monstro_death_12 = False
+    monstro_death_13 = False
+    monstro_death_14 = False
     movimento_vertical = 0
     tempo_no_ar = 0
     direction = 1
@@ -120,7 +129,16 @@ def Fase2(state):
     movimento_monstro4 = 0
     movimento_monstro5 = 0
     movimento_monstro6 = 0
+    movimento_monstro7 = 0
+    movimento_monstro8 = 0
+    movimento_monstro9 = 0
+    movimento_monstro10 = 0
+    movimento_monstro11 = 0
+    movimento_monstro12 = 0
+    movimento_monstro13 = 0
+    movimento_monstro14 = 0
     contador = 0
+    contador_2 = 0
     contador_hit = 100
     num_monstros = 0
     num_monstros_mortos = 0
@@ -131,6 +149,14 @@ def Fase2(state):
     contadormonstro4 = 0
     contadormonstro5 = 0
     contadormonstro6 = 0
+    contadormonstro7 = 0
+    contadormonstro8 = 0
+    contadormonstro9 = 0
+    contadormonstro10 = 0
+    contadormonstro11 = 0
+    contadormonstro12 = 0
+    contadormonstro13 = 0
+    contadormonstro14 = 0
     contadormonstromorte0 = 0
     contadormonstromorte1 = 0
     contadormonstromorte2 = 0
@@ -148,6 +174,14 @@ def Fase2(state):
     contador4 = 0
     contador5 = 0
     contador6 = 0
+    contador7 = 0
+    contador8 = 0
+    contador9 = 0
+    contador10 = 0
+    contador11 = 0
+    contador12 = 0
+    contador13 = 0
+    contador14 = 0
     contadorM0 = 0
     contadorM1 = 0
     contadorM2 = 0
@@ -155,6 +189,14 @@ def Fase2(state):
     contadorM4 = 0
     contadorM5 = 0
     contadorM6 = 0
+    contadorM7 = 0
+    contadorM8 = 0
+    contadorM9 = 0
+    contadorM10 = 0
+    contadorM11 = 0
+    contadorM12 = 0
+    contadorM13 = 0
+    contadorM14 = 0
     contadorhit_player = 0
     contadorbater_monstro = 0
     morreu0 = False
@@ -164,6 +206,14 @@ def Fase2(state):
     morreu4 = False
     morreu5 = False
     morreu6 = False
+    morreu7 = False
+    morreu8 = False
+    morreu9 = False
+    morreu10 = False
+    morreu11 = False
+    morreu12 = False
+    morreu13 = False
+    morreu14 = False
     contadordisparo_slime1 = True
     contadordisparo_slime2 = True
     contadordisparo_slime3 = True
@@ -177,6 +227,7 @@ def Fase2(state):
     contadortiro3 = 0
     contadortiro4 = 0
     contadoresq1 = 0
+    contadormin1 = 0
     tiroesq1 = False
     tiroesq2 = False
     tiroesq3 = False
@@ -233,13 +284,13 @@ def Fase2(state):
                  [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
                  [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,8,0,0,0,0,0,0,0,4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,],
                  [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,8,0,0,0,0,0,0,0,7,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,],
-                 [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,],
-                 [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,],
-                 [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
+                 [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
+                 [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
+                 [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
                  [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
                  [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
                  [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
-                 [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,],
+                 [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,],
                  [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,],
                  [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,],
                  [0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,],
@@ -303,6 +354,10 @@ def Fase2(state):
     animation_olho_frames = {}
     global animation_esqueleto_frames
     animation_esqueleto_frames = {}
+    global animation_minhoca_frames
+    animation_minhoca_frames = {}
+    global animation_cobra_frames
+    animation_cobra_frames = {}
 
 
     def load_animations_monstro (path,frame_duration):
@@ -337,6 +392,37 @@ def Fase2(state):
             n += 1
         return animation_frame_data
 
+    def load_animations_minhoca (path,frame_duration):
+        global animation_minhoca_frames
+        nome_animacao = path.split('/')[-1]
+        animation_frame_data = []
+        n = 1
+        for frame in frame_duration:
+            animation_frame_id = nome_animacao + str(n)
+            img_loc = path + '/' + animation_frame_id + '.png'
+            imagem_animacao = pygame.image.load(img_loc)
+            imagem_animacao = pygame.transform.scale(imagem_animacao, (110, 101))
+            animation_minhoca_frames[animation_frame_id] = imagem_animacao.copy()
+            for i in range(frame):
+                animation_frame_data.append(animation_frame_id)
+            n += 1
+        return animation_frame_data
+
+    def load_animations_cobra(path,frame_duration):
+        global animation_cobra_frames
+        nome_animacao = path.split('/')[-1]
+        animation_frame_data = []
+        n = 1
+        for frame in frame_duration:
+            animation_frame_id = nome_animacao + str(n)
+            img_loc = path + '/' + animation_frame_id + '.png'
+            imagem_animacao = pygame.image.load(img_loc)
+            imagem_animacao = pygame.transform.scale(imagem_animacao, (110, 101))
+            animation_cobra_frames[animation_frame_id] = imagem_animacao.copy()
+            for i in range(frame):
+                animation_frame_data.append(animation_frame_id)
+            n += 1
+        return animation_frame_data
 
     global animation_slime_frames
     animation_slime_frames = {}
@@ -385,6 +471,8 @@ def Fase2(state):
     animation_slimeT_database = {}
     animation_esqueleto_database = {}
     animation_espada_database = {}
+    animation_minhoca_database = {}
+    animation_cobra_database = {}
 
     animation_morcego_database['parado'] = load_animations_monstro('Slime_Animations/Slimeparado', [4, 4, 4, 4])
     animation_morcego_database['morrendo'] = load_animations_monstro('Slime_Animations/Slimemorrendo', [4, 4, 4, 300])
@@ -394,6 +482,26 @@ def Fase2(state):
     animation_esqueleto_database['morrendo'] = load_animations_esqueleto('Esqueleto_animations/Esqueletomorrendo',[9,9,9,9])
     animation_esqueleto_database['atacando'] = load_animations_esqueleto('Esqueleto_animations/Esqueletoatacando',[4,4,4,4,4,4])
     animation_espada_database['atacando'] = load_animations_esqueleto_tiro('Disparos_animations/Espada',[2,2,2])
+    animation_minhoca_database['atacando'] = load_animations_minhoca('Minhoca_Animations/Minhocaatacando', [2,2,2,2,2,2,2,2])
+    animation_minhoca_database['hit'] = load_animations_minhoca('Minhoca_Animations/Minhocahit', [2,2,2])
+    animation_minhoca_database['parado'] = load_animations_minhoca('Minhoca_Animations/Minhocaparada', [2,2,2,2,2,2,2,2])
+    animation_cobra_database['parado'] = load_animations_cobra('Cobra_Animations/Cobraparada', [2,2,2,2,2,2,2,2,2])
+    animation_cobra_database['andando'] = load_animations_cobra('Cobra_Animations/Cobraandando', [2, 2, 2, 2, 2, 2])
+    animation_cobra_database['atacando'] = load_animations_cobra('Cobra_Animations/Cobraatacando', [2, 2, 2, 2, 2, 2])
+    animation_cobra_database['hit'] = load_animations_cobra('Cobra_Animations/Cobrahit', [6, 6, 6])
+
+
+    cobra_action1 = 'parado'
+    cobra_frame1 = 0
+
+    cobra_action2 = 'parado'
+    cobra_frame2 = 0
+
+    cobra_action3 = 'parado'
+    cobra_frame3 = 0
+
+    cobra_action4 = 'parado'
+    cobra_frame4 = 0
 
     espada_action = 'atacando'
     espada_frame = 0
@@ -411,6 +519,7 @@ def Fase2(state):
     tiro_frame = 0
 
     monstro_flip = True
+    monstro_flip_cobra = False
 
     monstro_action0 = 'parado'
     monstro_frame0 = 0
@@ -424,14 +533,17 @@ def Fase2(state):
     monstro_action3 = 'parado'
     monstro_frame3 = 0
 
-    monstro_action4 = 'correndo'
-    monstro_frame4 = 0
+    minhoca_action0 = 'parado'
+    minhoca_frame0 = 0
 
-    monstro_action5 = 'correndo'
-    monstro_frame5 = 0
+    minhoca_action1 = 'parado'
+    minhoca_frame1 = 0
 
-    monstro_action6 = 'correndo'
-    monstro_frame6 = 0
+    minhoca_action2 = 'parado'
+    minhoca_frame2 = 0
+
+    minhoca_action3 = 'parado'
+    minhoca_frame3 = 0
 
     while True:
         clock.tick(60)
@@ -446,6 +558,7 @@ def Fase2(state):
         scroll[1] = int(scroll[1])
 
         janela.blit(cenario,(0,0))
+        janela.blit(castelo,(3500 - scroll[0],2250 - scroll[1]))
 
         tile_rects = []
         morte_rects = []
@@ -498,50 +611,10 @@ def Fase2(state):
                     morte_mapa = pygame.transform.scale(morte_mapa,(tile_tamanho, tile_tamanho))
                     janela.blit(morte_mapa, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
                     morte_rects.append(pygame.Rect(x * tile_tamanho, y * tile_tamanho, tile_tamanho, tile_tamanho))
-
-                #Parte Caverna
-                if tile == 12:
-                    fundo_caverna_img = pygame.transform.scale(fundo_caverna_img, (tile_tamanho, tile_tamanho))
-                    janela.blit(fundo_caverna_img, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
-                if tile == 13:
-                    tetocaverna1 = pygame.transform.scale(tetocaverna1, (tile_tamanho, tile_tamanho))
-                    janela.blit(tetocaverna1, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
+                if tile == 10:
+                    chaocastelo = pygame.transform.scale(chaocastelo, (tile_tamanho, tile_tamanho))
+                    janela.blit(chaocastelo, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
                     tile_rects.append(pygame.Rect(x * tile_tamanho, y * tile_tamanho, tile_tamanho, tile_tamanho))
-                if tile == 14:
-                    tetocaverna2 = pygame.transform.scale(tetocaverna2, (tile_tamanho, tile_tamanho))
-                    janela.blit(tetocaverna2, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
-                    tile_rects.append(pygame.Rect(x * tile_tamanho, y * tile_tamanho, tile_tamanho, tile_tamanho))
-                if tile == 15:
-                    tetocaverna3 = pygame.transform.scale(tetocaverna3, (tile_tamanho, tile_tamanho))
-                    janela.blit(tetocaverna3, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
-                    tile_rects.append(pygame.Rect(x * tile_tamanho, y * tile_tamanho, tile_tamanho, tile_tamanho))
-                if tile == 16:
-                    tetocaverna4 = pygame.transform.scale(tetocaverna4, (tile_tamanho, tile_tamanho))
-                    janela.blit(tetocaverna4, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
-                    tile_rects.append(pygame.Rect(x * tile_tamanho, y * tile_tamanho, tile_tamanho, tile_tamanho))
-                if tile == 17:
-                    tetocaverna5 = pygame.transform.scale(tetocaverna5, (tile_tamanho, tile_tamanho))
-                    janela.blit(tetocaverna5, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
-                    tile_rects.append(pygame.Rect(x * tile_tamanho, y * tile_tamanho, tile_tamanho, tile_tamanho))
-                if tile == 18:
-                    tetocaverna6 = pygame.transform.scale(tetocaverna6, (tile_tamanho, tile_tamanho))
-                    janela.blit(tetocaverna6, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
-                    tile_rects.append(pygame.Rect(x * tile_tamanho, y * tile_tamanho, tile_tamanho, tile_tamanho))
-                if tile == 19:
-                    fundo_caverna2_img = pygame.transform.scale(fundo_caverna2_img, (tile_tamanho, tile_tamanho))
-                    janela.blit(fundo_caverna2_img, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
-                if tile == 20:
-                    fundo_caverna3_img = pygame.transform.scale(fundo_caverna3_img, (tile_tamanho, tile_tamanho))
-                    janela.blit(fundo_caverna3_img, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
-                if tile == 21:
-                    fundo_caverna4_img = pygame.transform.scale(fundo_caverna4_img, (tile_tamanho, tile_tamanho))
-                    janela.blit(fundo_caverna4_img, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
-                if tile == 22:
-                    fundo_caverna5_img = pygame.transform.scale(fundo_caverna5_img, (tile_tamanho, tile_tamanho))
-                    janela.blit(fundo_caverna5_img, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
-                if tile == 23:
-                    fundo_caverna6_img = pygame.transform.scale(fundo_caverna6_img, (tile_tamanho, tile_tamanho))
-                    janela.blit(fundo_caverna6_img, (x * tile_tamanho - scroll[0], y * tile_tamanho - scroll[1]))
                 x+=1
             y+= 1
 
@@ -623,6 +696,8 @@ def Fase2(state):
         janela.blit(portao, (9513 - scroll[0], 350 - scroll[1]))
         janela.blit(pygame.transform.flip(player_image, player_flip, False),(player_rect.x - scroll[0], player_rect.y - scroll[1]))
 
+        janela.blit(entrada,(3415 - scroll[0],2325 - scroll[1]))
+        janela.blit(entrada, (4550 - scroll[0], 2325 - scroll[1]))
         monstro_frame0 += 1
         if monstro_frame0 >= len(animation_morcego_database[monstro_action0]):
             monstro_frame0 = 0
@@ -647,23 +722,53 @@ def Fase2(state):
         monstro_image_id3 = animation_morcego_database[monstro_action3][monstro_frame3]
         monstro3 = animation_olho_frames[monstro_image_id3]
 
-        '''monstro_frame4 += 1
-        if monstro_frame4 >= len(animation_olho_database[monstro_action4]):
-            monstro_frame4 = 0
-        monstro_image_id4 = animation_olho_database[monstro_action4][monstro_frame4]
-        monstro4 = animation_olho_frames[monstro_image_id4]
+        minhoca_frame0 += 1
+        if minhoca_frame0 >= len(animation_minhoca_database[minhoca_action0]):
+            minhoca_frame0 = 0
+        minhoca_image_id0 = animation_minhoca_database[minhoca_action0][minhoca_frame0]
+        minhoca0 = animation_minhoca_frames[minhoca_image_id0]
 
-        monstro_frame5 += 1
-        if monstro_frame5 >= len(animation_olho_database[monstro_action5]):
-            monstro_frame5 = 0
-        monstro_image_id5 = animation_olho_database[monstro_action5][monstro_frame5]
-        monstro5 = animation_olho_frames[monstro_image_id5]
+        minhoca_frame1 += 1
+        if minhoca_frame1 >= len(animation_minhoca_database[minhoca_action1]):
+            minhoca_frame1 = 0
+        minhoca_image_id1 = animation_minhoca_database[minhoca_action1][minhoca_frame1]
+        minhoca1 = animation_minhoca_frames[minhoca_image_id1]
 
-        monstro_frame6 += 1
-        if monstro_frame6 >= len(animation_olho_database[monstro_action6]):
-            monstro_frame6 = 0
-        monstro_image_id = animation_olho_database[monstro_action6][monstro_frame6]
-        monstro6 = animation_olho_frames[monstro_image_id]'''
+        minhoca_frame2 += 1
+        if minhoca_frame2 >= len(animation_minhoca_database[minhoca_action2]):
+            minhoca_frame2 = 0
+        minhoca_image_id2 = animation_minhoca_database[minhoca_action2][minhoca_frame2]
+        minhoca2 = animation_minhoca_frames[minhoca_image_id2]
+
+        minhoca_frame3 += 1
+        if minhoca_frame3 >= len(animation_minhoca_database[minhoca_action3]):
+            minhoca_frame3 = 0
+        minhoca_image_id3 = animation_minhoca_database[minhoca_action3][minhoca_frame3]
+        minhoca3 = animation_minhoca_frames[minhoca_image_id3]
+
+        cobra_frame1 += 1
+        if cobra_frame1 >= len(animation_cobra_database[cobra_action1]):
+            cobra_frame1 = 0
+        cobra_image_id1 = animation_cobra_database[cobra_action1][cobra_frame1]
+        cobra1 = animation_cobra_frames[cobra_image_id1]
+
+        cobra_frame2 += 1
+        if cobra_frame2 >= len(animation_cobra_database[cobra_action2]):
+            cobra_frame2 = 0
+        cobra_image_id2 = animation_cobra_database[cobra_action2][cobra_frame2]
+        cobra2 = animation_cobra_frames[cobra_image_id2]
+
+        cobra_frame3 += 1
+        if cobra_frame3 >= len(animation_cobra_database[cobra_action3]):
+            cobra_frame3 = 0
+        cobra_image_id3 = animation_cobra_database[cobra_action3][cobra_frame3]
+        cobra3 = animation_cobra_frames[cobra_image_id3]
+
+        cobra_frame4 += 1
+        if cobra_frame4 >= len(animation_cobra_database[cobra_action4]):
+            cobra_frame4 = 0
+        cobra_image_id4 = animation_cobra_database[cobra_action4][cobra_frame4]
+        cobra4 = animation_cobra_frames[cobra_image_id4]
 
         tiro_frame += 1
         if tiro_frame >= len(animation_slimeT_database[tiro_action]):
@@ -1157,7 +1262,403 @@ def Fase2(state):
                 if contadorbater_monstro >= 10:
                     contadorbater_monstro = 0
                     bater_monstro6 = False
+            contadormin1 += 1
+            # Ataque e perda de vida do Monstro 7
+            if monstro_death_7 == False:
+                if contadormonstro7 != 1:
+                    num_monstros += 1
+                    contadormonstro7 = 1
 
+                if contador7 == 0 and bater_monstro7 == False and contadormin1 <= 100:
+                    minhoca_action0, minhoca_frame0 = chance_action_monstro(minhoca_action0, minhoca_frame0,'parado')
+                if contador7 == 0 and bater_monstro7 == False and contadormin1 > 100:
+                    minhoca_action0, minhoca_frame0 = chance_action_monstro(minhoca_action0, minhoca_frame0,'atacando')
+                    tiroesq3 = True
+                if contador7 == 0 and bater_monstro7 == False and contadormin1 > 113:
+                    contadormin1 = 0
+
+                janela.blit(pygame.transform.flip(minhoca0, monstro_flip, False), (4360 - scroll[0], 2165 - scroll[1] - 15))
+                monstro_rect7_dano = minhoca_rect_dano.get_rect()
+                monstro_rect7_dano.x = 4398
+                monstro_rect7_dano.y = 2203
+                if minhoca_action0 == 'atacando':
+                    monstro_rect7 = minhoca_rect.get_rect()
+                    monstro_rect7.x = 4360 + movimento_monstro7
+                    monstro_rect7.y = 2203
+                    pygame.draw.rect(janela,(255,255,255),monstro_rect7)
+                    if player_rect.colliderect(monstro_rect7) and contador_hit >= 100 and bater == False and game_over == False and morreu7 == False:
+                        bater_monstro7 = True
+                        tomar_hit = True
+                        vidas -= 1
+                        listavida.pop(-1)
+                        contador_hit = 0
+                        if somrodando == True:
+                            Somdano.play()
+                if player_rect.colliderect(monstro_rect7_dano) and contador_hit >= 100 and bater == True and bater_monstro7 == False:
+                    contador7 = 1
+                    morreu7 = True
+                    minhoca_action0, minhoca_frame0 = chance_action_monstro(minhoca_action0, minhoca_frame0,'hit')
+                    if contadormonstromorte6 != 1:
+                        num_monstros_mortos += 1
+                        contadormonstromorte6 = 1
+                if morreu7 == True:
+                    contadorM7 += 1
+                    if contadorM7 == 8:
+                        if somrodando == True:
+                            Sominimigo.play()
+                    if contadorM7 >= 30:
+                        monstro_death_7 = True
+                if bater_monstro7 == True:
+                    contadorbater_monstro += 1
+                    if contadorbater_monstro >= 10:
+                        contadorbater_monstro = 0
+                        bater_monstro7 = False
+
+            # Ataque e perda de vida do Monstro 8
+            if monstro_death_8 == False:
+                if contadormonstro8 != 1:
+                    num_monstros += 1
+                    contadormonstro8 = 1
+
+                if contador8 == 0 and bater_monstro8 == False and contadormin1 <= 100:
+                    minhoca_action1, minhoca_frame1 = chance_action_monstro(minhoca_action1, minhoca_frame1,'parado')
+                if contador8 == 0 and bater_monstro8 == False and contadormin1 > 100:
+                    minhoca_action1, minhoca_frame1 = chance_action_monstro(minhoca_action1, minhoca_frame1,'atacando')
+                    tiroesq3 = True
+                if contador8 == 0 and bater_monstro8 == False and contadormin1 > 113:
+                    contadormin1 = 0
+
+                janela.blit(pygame.transform.flip(minhoca1, monstro_flip, False),(3850 - scroll[0], 2165 - scroll[1] - 15))
+                monstro_rect8_dano = minhoca_rect_dano.get_rect()
+                monstro_rect8_dano.x = 3888
+                monstro_rect8_dano.y = 2203
+                if minhoca_action0 == 'atacando':
+                    monstro_rect8 = minhoca_rect.get_rect()
+                    monstro_rect8.x = 3850 + movimento_monstro8
+                    monstro_rect8.y = 2203
+                    pygame.draw.rect(janela, (255, 255, 255), monstro_rect8)
+                    if player_rect.colliderect(monstro_rect8) and contador_hit >= 100 and bater == False and game_over == False and morreu8 == False:
+                        bater_monstro8 = True
+                        tomar_hit = True
+                        vidas -= 1
+                        listavida.pop(-1)
+                        contador_hit = 0
+                        if somrodando == True:
+                            Somdano.play()
+                if player_rect.colliderect(monstro_rect8_dano) and contador_hit >= 100 and bater == True and bater_monstro8 == False:
+                    contador8 = 1
+                    morreu8 = True
+                    minhoca_action1, minhoca_frame1 = chance_action_monstro(minhoca_action1, minhoca_frame1,'hit')
+                    if contadormonstromorte6 != 1:
+                        num_monstros_mortos += 1
+                        contadormonstromorte6 = 1
+                if morreu8 == True:
+                    contadorM8 += 1
+                    if contadorM8 == 8:
+                        if somrodando == True:
+                            Sominimigo.play()
+                    if contadorM8 >= 30:
+                        monstro_death_8 = True
+                if bater_monstro8 == True:
+                    contadorbater_monstro += 1
+                    if contadorbater_monstro >= 10:
+                        contadorbater_monstro = 0
+                        bater_monstro8 = False
+
+            # Ataque e perda de vida do Monstro 9
+            if monstro_death_9 == False:
+                if contadormonstro9 != 1:
+                    num_monstros += 1
+                    contadormonstro9 = 1
+
+                if contador9 == 0 and bater_monstro9 == False and contadormin1 <= 100:
+                    minhoca_action2, minhoca_frame2 = chance_action_monstro(minhoca_action2, minhoca_frame2,'parado')
+                if contador9 == 0 and bater_monstro9 == False and contadormin1 > 100:
+                    minhoca_action2, minhoca_frame2 = chance_action_monstro(minhoca_action2, minhoca_frame2,'atacando')
+                    tiroesq3 = True
+                if contador9 == 0 and bater_monstro9 == False and contadormin1 > 113:
+                    contadormin1 = 0
+
+                janela.blit(pygame.transform.flip(minhoca2, monstro_flip, False),(3210 - scroll[0], 2165 - scroll[1] - 15))
+                monstro_rect9_dano = minhoca_rect_dano.get_rect()
+                monstro_rect9_dano.x = 3248
+                monstro_rect9_dano.y = 2203
+                if minhoca_action0 == 'atacando':
+                    monstro_rect9 = minhoca_rect.get_rect()
+                    monstro_rect9.x = 3210 + movimento_monstro9
+                    monstro_rect9.y = 2203
+                    pygame.draw.rect(janela, (255, 255, 255), monstro_rect9)
+                    if player_rect.colliderect(monstro_rect9) and contador_hit >= 100 and bater == False and game_over == False and morreu9 == False:
+                        bater_monstro9 = True
+                        tomar_hit = True
+                        vidas -= 1
+                        listavida.pop(-1)
+                        contador_hit = 0
+                        if somrodando == True:
+                            Somdano.play()
+                if player_rect.colliderect(monstro_rect9_dano) and contador_hit >= 100 and bater == True and bater_monstro9 == False:
+                    contador9 = 1
+                    morreu9 = True
+                    minhoca_action2, minhoca_frame2 = chance_action_monstro(minhoca_action2, minhoca_frame2,'hit')
+                    if contadormonstromorte6 != 1:
+                        num_monstros_mortos += 1
+                        contadormonstromorte6 = 1
+                if morreu9 == True:
+                    contadorM9 += 1
+                    if contadorM9 == 8:
+                        if somrodando == True:
+                            Sominimigo.play()
+                    if contadorM9 >= 30:
+                        monstro_death_9 = True
+                if bater_monstro9 == True:
+                    contadorbater_monstro += 1
+                    if contadorbater_monstro >= 10:
+                        contadorbater_monstro = 0
+                        bater_monstro9 = False
+
+            # Ataque e perda de vida do Monstro 10
+            if monstro_death_10 == False:
+                if contadormonstro10 != 1:
+                    num_monstros += 1
+                    contadormonstro10 = 1
+
+                if contador10 == 0 and bater_monstro10 == False and contadormin1 <= 100:
+                    minhoca_action3, minhoca_frame3 = chance_action_monstro(minhoca_action3, minhoca_frame3,'parado')
+                if contador10 == 0 and bater_monstro10 == False and contadormin1 > 100:
+                    minhoca_action3, minhoca_frame3 = chance_action_monstro(minhoca_action3, minhoca_frame3,'atacando')
+                    tiroesq3 = True
+                if contador10 == 0 and bater_monstro10 == False and contadormin1 > 113:
+                    contadormin1 = 0
+
+                janela.blit(pygame.transform.flip(minhoca3, monstro_flip, False),(2490 - scroll[0], 2165 - scroll[1] - 15))
+                monstro_rect10_dano = minhoca_rect_dano.get_rect()
+                monstro_rect10_dano.x = 2528
+                monstro_rect10_dano.y = 2203
+                if minhoca_action0 == 'atacando':
+                    monstro_rect10 = minhoca_rect.get_rect()
+                    monstro_rect10.x = 2490 + movimento_monstro10
+                    monstro_rect10.y = 2203
+                    pygame.draw.rect(janela, (255, 255, 255), monstro_rect10)
+                    if player_rect.colliderect(monstro_rect10) and contador_hit >= 100 and bater == False and game_over == False and morreu7 == False:
+                        bater_monstro10 = True
+                        tomar_hit = True
+                        vidas -= 1
+                        listavida.pop(-1)
+                        contador_hit = 0
+                        if somrodando == True:
+                            Somdano.play()
+                if player_rect.colliderect(monstro_rect10_dano) and contador_hit >= 100 and bater == True and bater_monstro10 == False:
+                    contador10 = 1
+                    morreu10 = True
+                    minhoca_action3, minhoca_frame3 = chance_action_monstro(minhoca_action3, minhoca_frame3,'hit')
+                    if contadormonstromorte6 != 1:
+                        num_monstros_mortos += 1
+                        contadormonstromorte6 = 1
+                if morreu10 == True:
+                    contadorM10 += 1
+                    if contadorM10 == 8:
+                        if somrodando == True:
+                            Sominimigo.play()
+                    if contadorM10 >= 30:
+                        monstro_death_10 = True
+                if bater_monstro10 == True:
+                    contadorbater_monstro += 1
+                    if contadorbater_monstro >= 10:
+                        contadorbater_monstro = 0
+                        bater_monstro10 = False
+
+            # Ataque e perda de vida do Monstro 11
+            if monstro_death_11 == False:
+                if contadormonstro11 != 1:
+                    num_monstros += 1
+                    contadormonstro11 = 1
+                if contador11 == 0 and bater_monstro11 == False:
+                    cobra_action1, cobra_frame1 = chance_action_monstro(cobra_action1, cobra_frame1,'parado')
+                janela.blit(pygame.transform.flip(cobra1,monstro_flip_cobra,False),(2840 - scroll[0] + movimento_monstro11, 370 - scroll[1] - 15))
+                monstro_rect11 = cobra1.get_rect()
+                monstro_rect11.x = 2840 + movimento_monstro11
+                monstro_rect11.y = 370
+
+                if -500 <= player_rect.x - monstro_rect11.x <= 0 and player_rect.y + 20 == monstro_rect11.y:
+                    movimento_monstro11 -= 3
+                    monstro_flip_cobra = True
+                if 500 >= player_rect.x - monstro_rect11.x > 0 and player_rect.y + 20 == monstro_rect11.y:
+                    movimento_monstro11 += 3
+                    monstro_flip_cobra = False
+                if player_rect.colliderect(monstro_rect11) and contador_hit >= 100 and bater == False and game_over == False and morreu0 == False:
+                    bater_monstro11 = True
+                    tomar_hit = True
+                    vidas -= 1
+                    listavida.pop(-1)
+                    contador_hit = 0
+                    if somrodando == True:
+                        Somdano.play()
+                if player_rect.colliderect(monstro_rect11) and contador_hit >= 100 and bater == True and bater_monstro11 == False:
+                    contador11 = 1
+                    morreu11 = True
+                    cobra_action1, cobra_frame1 = chance_action_monstro(cobra_action1, cobra_frame1,'hit')
+
+                    if contadormonstromorte6 != 1:
+                        num_monstros_mortos += 1
+                        contadormonstromorte6 = 1
+                if morreu11 == True:
+                    contadorM11 += 1
+                    if contadorM11 == 8:
+                        if somrodando == True:
+                            Sominimigo.play()
+                    if contadorM11 >= 10:
+                        monstro_death_11 = True
+
+                if bater_monstro11 == True:
+                    cobra_action1, cobra_frame1 = chance_action_monstro(cobra_action1, cobra_frame1,'atacando')
+                    contadorbater_monstro += 1
+                    if contadorbater_monstro >= 10:
+                        contadorbater_monstro = 0
+                        bater_monstro11 = False
+            # Ataque e perda de vida do Monstro 12
+            if monstro_death_12 == False:
+                if contadormonstro12 != 1:
+                    num_monstros += 1
+                    contadormonstro12 = 1
+                if contador12 == 0 and bater_monstro12 == False:
+                    cobra_action2, cobra_frame2 = chance_action_monstro(cobra_action2, cobra_frame2, 'parado')
+                janela.blit(pygame.transform.flip(cobra2, monstro_flip_cobra, False),(3040- scroll[0] + movimento_monstro12, 920 - scroll[1] - 15))
+                monstro_rect12 = cobra2.get_rect()
+                monstro_rect12.x = 3040 + movimento_monstro12
+                monstro_rect12.y = 920
+
+                if -500 <= player_rect.x - monstro_rect12.x <= 0 and player_rect.y + 20 == monstro_rect12.y:
+                    movimento_monstro12 -= 3
+                    monstro_flip_cobra = True
+                if 500 >= player_rect.x - monstro_rect12.x > 0 and player_rect.y + 20 == monstro_rect12.y:
+                    movimento_monstro12 += 3
+                    monstro_flip_cobra = False
+                if player_rect.colliderect(monstro_rect12) and contador_hit >= 100 and bater == False and game_over == False and morreu0 == False:
+                    bater_monstro12 = True
+                    tomar_hit = True
+                    vidas -= 1
+                    listavida.pop(-1)
+                    contador_hit = 0
+                    if somrodando == True:
+                        Somdano.play()
+                if player_rect.colliderect(monstro_rect12) and contador_hit >= 100 and bater == True and bater_monstro11 == False:
+                    contador12 = 1
+                    morreu12 = True
+                    cobra_action2, cobra_frame2 = chance_action_monstro(cobra_action2, cobra_frame2, 'hit')
+
+                    if contadormonstromorte6 != 1:
+                        num_monstros_mortos += 1
+                        contadormonstromorte6 = 1
+                if morreu12 == True:
+                    contadorM12 += 1
+                    if contadorM12 == 8:
+                        if somrodando == True:
+                            Sominimigo.play()
+                    if contadorM12 >= 10:
+                        monstro_death_12 = True
+
+                if bater_monstro12 == True:
+                    cobra_action2, cobra_frame2 = chance_action_monstro(cobra_action2, cobra_frame2, 'atacando')
+                    contadorbater_monstro += 1
+                    if contadorbater_monstro >= 10:
+                        contadorbater_monstro = 0
+                        bater_monstro12 = False
+
+            # Ataque e perda de vida do Monstro 13
+            if monstro_death_13 == False:
+                if contadormonstro13 != 1:
+                    num_monstros += 1
+                    contadormonstro13 = 1
+                if contador13 == 0 and bater_monstro13 == False:
+                    cobra_action3, cobra_frame3 = chance_action_monstro(cobra_action3, cobra_frame3,'parado')
+                janela.blit(pygame.transform.flip(cobra3, monstro_flip_cobra, False),(910 - scroll[0] + movimento_monstro13, 770 - scroll[1] - 15))
+                monstro_rect13 = cobra1.get_rect()
+                monstro_rect13.x = 910 + movimento_monstro13
+                monstro_rect13.y = 770
+
+                if -500 <= player_rect.x - monstro_rect13.x <= 0 and player_rect.y + 20 == monstro_rect13.y:
+                    movimento_monstro13 -= 3
+                    monstro_flip_cobra = True
+                if 500 >= player_rect.x - monstro_rect13.x > 0 and player_rect.y + 20 == monstro_rect13.y:
+                    movimento_monstro13 += 3
+                    monstro_flip_cobra = False
+                if player_rect.colliderect(monstro_rect13) and contador_hit >= 100 and bater == False and game_over == False and morreu0 == False:
+                    bater_monstro13 = True
+                    tomar_hit = True
+                    vidas -= 1
+                    listavida.pop(-1)
+                    contador_hit = 0
+                    if somrodando == True:
+                        Somdano.play()
+                if player_rect.colliderect(monstro_rect13) and contador_hit >= 100 and bater == True and bater_monstro13 == False:
+                    contador13 = 1
+                    morreu13 = True
+                    cobra_action3, cobra_frame3 = chance_action_monstro(cobra_action3, cobra_frame3, 'hit')
+
+                    if contadormonstromorte6 != 1:
+                        num_monstros_mortos += 1
+                        contadormonstromorte6 = 1
+                if morreu13 == True:
+                    contadorM13 += 1
+                    if contadorM13 == 8:
+                        if somrodando == True:
+                            Sominimigo.play()
+                    if contadorM13 >= 10:
+                        monstro_death_13 = True
+
+                if bater_monstro13 == True:
+                    cobra_action3, cobra_frame3 = chance_action_monstro(cobra_action3, cobra_frame3,'atacando')
+                    contadorbater_monstro += 1
+                    if contadorbater_monstro >= 10:
+                        contadorbater_monstro = 0
+                        bater_monstro13 = False
+            # Ataque e perda de vida do Monstro 14
+            if monstro_death_14 == False:
+                if contadormonstro14 != 1:
+                    num_monstros += 1
+                    contadormonstro14 = 1
+                if contador14 == 0 and bater_monstro14 == False:
+                    cobra_action4, cobra_frame4 = chance_action_monstro(cobra_action4, cobra_frame4, 'parado')
+                janela.blit(pygame.transform.flip(cobra4, monstro_flip_cobra, False),(3070 - scroll[0] + movimento_monstro14, 1220 - scroll[1] - 15))
+                monstro_rect14 = cobra1.get_rect()
+                monstro_rect14.x = 3070 + movimento_monstro14
+                monstro_rect14.y = 1220
+                if -500 <= player_rect.x - monstro_rect14.x <= 0 and player_rect.y + 20 == monstro_rect14.y:
+                    movimento_monstro14 -= 3
+                    monstro_flip_cobra = True
+                if 500 >= player_rect.x - monstro_rect14.x > 0 and player_rect.y + 20 == monstro_rect14.y:
+                    movimento_monstro14 += 3
+                    monstro_flip_cobra = False
+                if player_rect.colliderect(monstro_rect14) and contador_hit >= 100 and bater == False and game_over == False and morreu0 == False:
+                    bater_monstro14 = True
+                    tomar_hit = True
+                    vidas -= 1
+                    listavida.pop(-1)
+                    contador_hit = 0
+                    if somrodando == True:
+                        Somdano.play()
+                if player_rect.colliderect(monstro_rect14) and contador_hit >= 100 and bater == True and bater_monstro14 == False:
+                    contador14 = 1
+                    morreu14 = True
+                    cobra_action4, cobra_frame4 = chance_action_monstro(cobra_action4, cobra_frame4, 'hit')
+
+                    if contadormonstromorte6 != 1:
+                        num_monstros_mortos += 1
+                        contadormonstromorte6 = 1
+                if morreu14 == True:
+                    contadorM14 += 1
+                    if contadorM14 == 8:
+                        if somrodando == True:
+                            Sominimigo.play()
+                    if contadorM14 >= 10:
+                        monstro_death_14 = True
+
+                if bater_monstro14 == True:
+                    cobra_action4, cobra_frame4 = chance_action_monstro(cobra_action4, cobra_frame4, 'atacando')
+                    contadorbater_monstro += 1
+                    if contadorbater_monstro >= 10:
+                        contadorbater_monstro = 0
+                        bater_monstro14 = False
         if contador < 100:
             contador += 1
             if contador0 == 0:
@@ -1174,6 +1675,16 @@ def Fase2(state):
                 movimento_monstro5 += 3
             if contador6 == 0:
                 movimento_monstro6 += 3
+        if contador_2 < 150:
+            contador_2 += 1
+            if contador7 == 0:
+                movimento_monstro7 = 72
+            if contador8 == 0:
+                movimento_monstro8 = 72
+            if contador9 == 0:
+                movimento_monstro9 = 72
+            if contador10 == 0:
+                movimento_monstro10 = 72
             monstro_flip = False
         if contador >= 100:
             contador += 1
@@ -1191,9 +1702,21 @@ def Fase2(state):
                 movimento_monstro5 -= 3
             if contador6 == 0:
                 movimento_monstro6 -= 3
+        if contador_2 >= 150:
+            contador_2 += 1
+            if contador7 == 0:
+                movimento_monstro7 = -20
+            if contador8 == 0:
+                movimento_monstro8 = -20
+            if contador9 == 0:
+                movimento_monstro9 = -20
+            if contador10 == 0:
+                movimento_monstro10 = -20
             monstro_flip = True
         if contador == 200:
             contador = 0
+        if contador_2 == 250:
+            contador_2 = 0
 
         for tile in morte_rects:
             if player_rect.colliderect(tile):
