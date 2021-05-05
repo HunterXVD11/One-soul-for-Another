@@ -434,7 +434,7 @@ def Fase2(state):
     monstro_frame6 = 0
 
     while True:
-        clock.tick(60)
+
         print("clock.tick:", clock.tick())
         print("clock.get_fps", clock.get_fps())
         print(player_rect.x)
@@ -1421,12 +1421,12 @@ def Fase2(state):
                                         return state
 
                                     if mx >= 360 and mx <= 860 and my >= 360 and my <= 460:
-                                        state = "Fase1"
+                                        state = "Fase2"
                                         return state
 
                                     if mx >= 360 and mx <= 860 and my >= 110 and my <= 210:
                                         varpause = False
                             pygame.display.update()
-        #clock.tick(120)
+        clock.tick(300)
         pygame.display.update()
 
