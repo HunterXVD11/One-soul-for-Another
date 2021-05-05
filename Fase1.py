@@ -1176,6 +1176,6 @@ def Fase1(state):
 
         print("clock.tick:", clock.tick())
         print("clock.get_fps", clock.get_fps())
-        clock.tick(60)
+
         pygame.display.update()
 
