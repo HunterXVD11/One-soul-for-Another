@@ -1173,13 +1173,9 @@ def Fase1(state):
                                     if mx >= 360 and mx <= 860 and my >= 110 and my <= 210:
                                         varpause = False
                             pygame.display.update()
-<<<<<<< HEAD
 
         print("clock.tick:", clock.tick())
         print("clock.get_fps", clock.get_fps())
-        pygame.display.update()
-=======
->>>>>>> 4b93833e2b604276f79665d6a9dc57460256f381
         clock.tick(60)
         pygame.display.update()
 
