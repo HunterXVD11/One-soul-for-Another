@@ -11,19 +11,22 @@ janela_largura = 1200
 janela_altura = 675
 janela = pygame.display.set_mode((janela_largura, janela_altura))
 pygame.display.set_caption('One soul for another')
+
 def Creditos(state):
     credito = pygame.image.load('creditosimg.png')
+    voltarmenuon = pygame.image.load('voltarmenuon.png')
     credito_altura = 690
     while True:
         mx = 0
         my = 0
-        print("clock.tick:", clock.tick())
-        print("clock.get_fps", clock.get_fps())
         janela.fill((0, 0, 0))
         janela.blit(credito, (150, credito_altura))
         if credito_altura > - 1250:
-            credito_altura -= 2
+            credito_altura -= 30
         else:
+            mouseposic = pygame.mouse.get_pos()
+            if mouseposic[0] >= 750 and mouseposic[0] <= 1100 and mouseposic[1] >= 570 and mouseposic[1] < 670:
+                janela.blit(voltarmenuon, (735, 585))
             for event in pygame.event.get():
                 if event.type == MOUSEBUTTONDOWN:
                     mx, my = pygame.mouse.get_pos()
