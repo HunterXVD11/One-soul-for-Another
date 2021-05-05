@@ -23,7 +23,6 @@ def Historia(state):
     while True:
         janela.fill((0, 0, 0))
         janela.blit(pergaminho, (150, pergaminho_altura))
-
         if pergaminho_altura > - 1000:
             pergaminho_altura -= 10
         else:
@@ -31,7 +30,7 @@ def Historia(state):
             for event in pygame.event.get():
                 if event.type == KEYDOWN:
                     if event.key == K_RETURN:
-                        state = 'Fase2'
+                        state = 'Fase1'
                         return state
 
 

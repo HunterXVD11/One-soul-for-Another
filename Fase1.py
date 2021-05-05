@@ -7,6 +7,8 @@ from pygame import mixer
 import random
 import move
 
+
+
 def Fase1(state):
     pygame.init()
     fonte = pygame.font.Font('freesansbold.ttf', 45)
@@ -32,11 +34,11 @@ def Fase1(state):
     Somdano = pygame.mixer.Sound("Kaorimorrendo.mp3")
     Sominimigo = pygame.mixer.Sound("goblin.mp3")
     Sommorte = pygame.mixer.Sound("mortesound.mp3")
-
+    Sommorte.set_volume(0.3)
     #Load Images
 
-    frase_portao = pygame.image.load('Corra_portao.png')
-    frase_portao = pygame.transform.scale(frase_portao,(600, 102))
+    frase_portao = pygame.image.load('Corraportao.png')
+    frase_portao = pygame.transform.scale(frase_portao,(600, 100))
 
     pause_img = pygame.image.load("pauseimg.png")
 
@@ -100,6 +102,8 @@ def Fase1(state):
 
     alma_monstro = pygame.image.load('alma_monstro.png')
     alma_monstro = pygame.transform.scale(alma_monstro, (50, 77))
+    global somrodando
+    global musicarodando
     somrodando = True
     musicarodando = True
     movimento_direita = False
@@ -360,11 +364,6 @@ def Fase1(state):
         janela.fill((146,244,255))
         janela.blit(cenario,(0,0))
         janela.blit(vila,(0 - scroll[0],-170 - scroll[1]))
-
-
-        print("clock.tick:", clock.tick())
-        print("clock.get_fps", clock.get_fps())
-
 
         v = 1000
         for c in range(19):
@@ -999,9 +998,13 @@ def Fase1(state):
 
             restart = pygame.image.load('recomecar_restart.png')
             restart = pygame.transform.scale(restart, (230, 109))
+            restartvermelho = pygame.image.load('recomecar_restartvermelho.png')
+            restartvermelho = pygame.transform.scale(restartvermelho, (230, 109))
 
             voltar_menu = pygame.image.load('voltar_ao_menu_restart.png')
             voltar_menu = pygame.transform.scale(voltar_menu, (230, 109))
+            voltar_menuvermelho = pygame.image.load('voltar_ao_menu_restartvermelho.png')
+            voltar_menuvermelho = pygame.transform.scale(voltar_menuvermelho, (230, 109))
 
             animation_frames
             animation_frames = {}
@@ -1052,6 +1055,13 @@ def Fase1(state):
                 morte_action, morte_frame = chance_action(morte_action, morte_frame, 'parada')
 
                 morte_frame += 1
+                mouseposic = pygame.mouse.get_pos()
+                if mouseposic[0] >= 600 and mouseposic[0] <= 800 and mouseposic[1] >= 550 and mouseposic[1] <= 650:
+                    janela.blit(voltar_menuvermelho, (600, 550))
+
+                if mouseposic[0] >= 350 and mouseposic[0] <= 550 and mouseposic[1] >= 550 and mouseposic[1] <= 650:
+                    janela.blit(restartvermelho, (350, 550))
+
                 if morte_frame >= len(animation_database[morte_action]):
                     morte_frame = 0
                 morte_image_id = animation_database[morte_action][morte_frame]
@@ -1079,14 +1089,15 @@ def Fase1(state):
                 pygame.display.update()
         # Desenha portão
         if num_monstros_mortos == 7:
-            janela.blit(frase_portao, (300, 20))
+            janela.blit(frase_portao, (350, 20))
             portao = pygame.image.load('Portao_aberto.png')
             portao = pygame.transform.scale(portao, (125, 157))
             portao_rect = portao.get_rect()
             portao_rect.x = 9523
             portao_rect.y = 400
             if player_rect.colliderect(portao_rect):
-                janela.blit(vitoria, (350, 200))
+                state = "Fase2"
+                return state
 
         if game_over == False:
             for event in pygame.event.get():
@@ -1118,24 +1129,50 @@ def Fase1(state):
                     if event.key == K_ESCAPE:
                         varpause = True
                         while varpause:
+                            print(somrodando , musicarodando)
                             janela3 = janela.blit(pause_img, (0, 0))
+                            mouseposic = pygame.mouse.get_pos()
+                            voltarmenuon = pygame.image.load("voltarmenupause.png")
+                            reiniciaron = pygame.image.load("reiniciarfasepause.png")
+                            voltarjogo = pygame.image.load("voltaraojogopause.png")
                             mx = 0
                             my = 0
+                            if mouseposic[0] >= 360 and mouseposic[0] <= 860 and mouseposic[1] >= 480 and mouseposic[1] <= 580 :
+                                janela.blit(voltarmenuon, (0, 0))
+
+                            if mouseposic[0] >= 360 and mouseposic[0] <= 860 and mouseposic[1] >= 360 and mouseposic[1] <= 460 :
+                                janela.blit(reiniciaron, (0, 0))
+
+                            if mouseposic[0] >= 360 and mouseposic[0] <= 860 and mouseposic[1] >= 110 and mouseposic[1] <= 210 :
+                                janela.blit(voltarjogo, (0, 0))
+
                             if musicarodando == True:
                                 musica = pygame.image.load("colcheiaoff.png")
                                 janela.blit(musica, (430, 250))
+                                if mouseposic[0] >= 430 and mouseposic[0] <= 500 and mouseposic[1] >= 250 and mouseposic[1] <= 420:
+                                    musica1 = pygame.image.load("colcheiaoffvermelha.png")
+                                    janela.blit(musica1,(430, 250))
 
                             elif musicarodando == False:
                                 musica = pygame.image.load("colcheia.png")
                                 janela.blit(musica, (525, 250))
+                                if mouseposic[0] >= 525 and mouseposic[0] <= 595 and mouseposic[1] >= 250 and mouseposic[1] <= 420:
+                                    musica1 = pygame.image.load("colcheiavermelha.png")
+                                    janela.blit(musica1,(525, 250))
 
                             if somrodando == True:
                                 som = pygame.image.load("somoff.png")
                                 janela.blit(som, (665, 250))
+                                if mouseposic[0] >= 665 and mouseposic[0] <= 735 and mouseposic[1] >= 250 and mouseposic[1] <= 420:
+                                    musica1 = pygame.image.load("somoffvermelho.png")
+                                    janela.blit(musica1,(665, 250))
 
                             elif somrodando == False:
                                 som = pygame.image.load("somon.png")
                                 janela.blit(som, (765, 250))
+                                if mouseposic[0] >= 765 and mouseposic[0] <= 835 and mouseposic[1] >= 250 and mouseposic[1] <= 420:
+                                    musica1 = pygame.image.load("somonvermelho.png")
+                                    janela.blit(musica1,(765, 250))
 
                             for event in pygame.event.get():
                                 if event.type == pygame.QUIT:
@@ -1145,6 +1182,7 @@ def Fase1(state):
                                     if musicarodando == True and mx >= 430 and mx <= 500 and my >= 250 and my <= 420:
                                         mixer.music.pause()
                                         pygame.display.update()
+
                                         musicarodando = False
 
                                     if musicarodando == False and mx >= 525 and mx <= 595 and my >= 250 and my <= 420:
@@ -1173,9 +1211,8 @@ def Fase1(state):
                                     if mx >= 360 and mx <= 860 and my >= 110 and my <= 210:
                                         varpause = False
                             pygame.display.update()
-
+        clock.tick(120)
         print("clock.tick:", clock.tick())
         print("clock.get_fps", clock.get_fps())
-        clock.tick(60)
         pygame.display.update()
 

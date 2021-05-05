@@ -33,10 +33,10 @@ def Fase2(state):
     Somdano = pygame.mixer.Sound("Kaorimorrendo.mp3")
     Sominimigo = pygame.mixer.Sound("goblin.mp3")
     Sommorte = pygame.mixer.Sound("mortesound.mp3")
-
+    Sommorte.set_volume(0.3)
     #Load Images
 
-    frase_portao = pygame.image.load('Corra_portao.png')
+    frase_portao = pygame.image.load('Corraportao.png')
     frase_portao = pygame.transform.scale(frase_portao,(600, 102))
 
     pause_img = pygame.image.load("pauseimg.png")
@@ -1149,24 +1149,50 @@ def Fase2(state):
                     if event.key == K_ESCAPE:
                         varpause = True
                         while varpause:
+                            print(somrodando, musicarodando)
                             janela3 = janela.blit(pause_img, (0, 0))
+                            mouseposic = pygame.mouse.get_pos()
+                            voltarmenuon = pygame.image.load("voltarmenupause.png")
+                            reiniciaron = pygame.image.load("reiniciarfasepause.png")
+                            voltarjogo = pygame.image.load("voltaraojogopause.png")
                             mx = 0
                             my = 0
+                            if mouseposic[0] >= 360 and mouseposic[0] <= 860 and mouseposic[1] >= 480 and mouseposic[1] <= 580 :
+                                janela.blit(voltarmenuon, (0, 0))
+
+                            if mouseposic[0] >= 360 and mouseposic[0] <= 860 and mouseposic[1] >= 360 and mouseposic[1] <= 460 :
+                                janela.blit(reiniciaron, (0, 0))
+
+                            if mouseposic[0] >= 360 and mouseposic[0] <= 860 and mouseposic[1] >= 110 and mouseposic[1] <= 210 :
+                                janela.blit(voltarjogo, (0, 0))
+
                             if musicarodando == True:
                                 musica = pygame.image.load("colcheiaoff.png")
                                 janela.blit(musica, (430, 250))
+                                if mouseposic[0] >= 430 and mouseposic[0] <= 500 and mouseposic[1] >= 250 and mouseposic[1] <= 420:
+                                    musica1 = pygame.image.load("colcheiaoffvermelha.png")
+                                    janela.blit(musica1,(430, 250))
 
                             elif musicarodando == False:
                                 musica = pygame.image.load("colcheia.png")
                                 janela.blit(musica, (525, 250))
+                                if mouseposic[0] >= 525 and mouseposic[0] <= 595 and mouseposic[1] >= 250 and mouseposic[1] <= 420:
+                                    musica1 = pygame.image.load("colcheiavermelha.png")
+                                    janela.blit(musica1,(525, 250))
 
                             if somrodando == True:
                                 som = pygame.image.load("somoff.png")
                                 janela.blit(som, (665, 250))
+                                if mouseposic[0] >= 665 and mouseposic[0] <= 735 and mouseposic[1] >= 250 and mouseposic[1] <= 420:
+                                    musica1 = pygame.image.load("somoffvermelho.png")
+                                    janela.blit(musica1,(665, 250))
 
                             elif somrodando == False:
                                 som = pygame.image.load("somon.png")
                                 janela.blit(som, (765, 250))
+                                if mouseposic[0] >= 765 and mouseposic[0] <= 835 and mouseposic[1] >= 250 and mouseposic[1] <= 420:
+                                    musica1 = pygame.image.load("somonvermelho.png")
+                                    janela.blit(musica1,(765, 250))
 
                             for event in pygame.event.get():
                                 if event.type == pygame.QUIT:
@@ -1198,12 +1224,12 @@ def Fase2(state):
                                         return state
 
                                     if mx >= 360 and mx <= 860 and my >= 360 and my <= 460:
-                                        state = "Fase2"
+                                        state = "Fase1"
                                         return state
 
                                     if mx >= 360 and mx <= 860 and my >= 110 and my <= 210:
                                         varpause = False
                             pygame.display.update()
-
+        #clock.tick(120)
         pygame.display.update()
 
