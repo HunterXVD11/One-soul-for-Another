@@ -631,7 +631,17 @@ def Fase2(state):
             if contadordisparo_slime1 == True:
                 movimentotiro += 3
                 janela.blit(tiro, (4065 - scroll[0], 1600 + movimentotiro - scroll[1] - 15))
+                tiro_rect = tiro.get_rect()
+                tiro_rect.x = 4065
+                tiro_rect.y = 1600 + movimentotiro
                 contadortiro += 1
+                if player_rect.colliderect(tiro_rect) and contador_hit >= 20 and len(listavida) > 0:
+                    tomar_hit = True
+                    vidas -= 1
+                    listavida.pop(-1)
+                    contador_hit = 0
+                    if somrodando == True:
+                        Somdano.play()
                 if contadortiro >= 100:
                     movimentotiro = 0
                     contadordisparo_slime1 = False
@@ -686,7 +696,17 @@ def Fase2(state):
             if contadordisparo_slime2 == True:
                 movimentotiro += 3
                 janela.blit(tiro, (3865 - scroll[0], 1600 + movimentotiro - scroll[1] - 15))
+                tiro_rect = tiro.get_rect()
+                tiro_rect.x = 3865
+                tiro_rect.y = 1600 + movimentotiro
                 contadortiro += 1
+                if player_rect.colliderect(tiro_rect) and contador_hit >= 20 and len(listavida) > 0:
+                    tomar_hit = True
+                    vidas -= 1
+                    listavida.pop(-1)
+                    contador_hit = 0
+                    if somrodando == True:
+                        Somdano.play()
                 if contadortiro >= 100:
                     movimentotiro = 0
                     contadordisparo_slime2 = False
@@ -740,7 +760,17 @@ def Fase2(state):
             if contadordisparo_slime3 == True:
                 movimentotiro += 3
                 janela.blit(tiro, (3665 - scroll[0], 1600 + movimentotiro - scroll[1] - 15))
+                tiro_rect = tiro.get_rect()
+                tiro_rect.x = 3665
+                tiro_rect.y = 1600 + movimentotiro
                 contadortiro += 1
+                if player_rect.colliderect(tiro_rect) and contador_hit >= 20 and len(listavida) > 0:
+                    tomar_hit = True
+                    vidas -= 1
+                    listavida.pop(-1)
+                    contador_hit = 0
+                    if somrodando == True:
+                        Somdano.play()
                 if contadortiro >= 100:
                     movimentotiro = 0
                     contadordisparo_slime1 = False
@@ -795,7 +825,17 @@ def Fase2(state):
             if contadordisparo_slime1 == True and morreu3 == False:
                 movimentotiro += 3
                 janela.blit(tiro, (3455 - scroll[0], 1600 + movimentotiro - scroll[1] - 15))
+                tiro_rect = tiro.get_rect()
+                tiro_rect.x = 3455
+                tiro_rect.y = 1600 + movimentotiro
                 contadortiro += 1
+                if player_rect.colliderect(tiro_rect) and contador_hit >= 20 and len(listavida) > 0:
+                    tomar_hit = True
+                    vidas -= 1
+                    listavida.pop(-1)
+                    contador_hit = 0
+                    if somrodando == True:
+                        Somdano.play()
                 if contadortiro >= 100:
                     movimentotiro = 0
                     contadordisparo_slime4 = False
