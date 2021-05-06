@@ -41,6 +41,8 @@ def Fase1(state):
     frase_portao = pygame.transform.scale(frase_portao,(600, 100))
 
     pause_img = pygame.image.load("pauseimg.png")
+    barra_hp = pygame.image.load("barra_HP.png")
+    barra_hp = pygame.transform.scale(barra_hp, (350, 39))
 
     #Parte Grama
     chao_voador = pygame.image.load("chãos.png")
@@ -184,9 +186,10 @@ def Fase1(state):
     morreu5 = False
     morreu6 = False
 
-    for i in range(5):
-        vida = pygame.image.load('Vida.png')
-        listavida.append(vida)
+    for i in range(8):
+        hp = pygame.image.load('HP.png')
+        hp = pygame.transform.scale(hp, (35, 39))
+        listavida.append(hp)
 
 
     world_data = [[0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,],
@@ -524,11 +527,12 @@ def Fase1(state):
         janela.blit(chao_voador2, (6300 - scroll[0], 375 - scroll[1]))
         janela.blit(chao_voador3, (5440 - scroll[0], 375 - scroll[1]))
 
+        janela.blit(barra_hp, (20, 25))
         #Desenha Vidas
-        x = 20
+        x = 55
         for vida in listavida:
-            janela.blit(vida,(x, 25))
-            x += 20
+            janela.blit(vida, (x, 25))
+            x += 35
 
         #Desenha numero de Monstros a serem derrotados
         janela.blit(contador_monstro, (145, 20))
@@ -1097,7 +1101,8 @@ def Fase1(state):
             portao_rect.y = 400
             if player_rect.colliderect(portao_rect):
                 state = "Fase2"
-                return state
+
+                return state,listavida
 
         if game_over == False:
             for event in pygame.event.get():

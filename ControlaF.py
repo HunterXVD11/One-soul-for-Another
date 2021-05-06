@@ -12,8 +12,8 @@ import Fase1
 import Creditos
 import Fase2
 
-state = "Fase2"
-
+state = "Fase1"
+listavida = []
 while True:
 
     if state == "Menu":
@@ -29,7 +29,7 @@ while True:
         state = Historia.Historia("Historia")
 
     elif state == "Fase1":
-        state = Fase1.Fase1("Fase1")
+        state,listavida = Fase1.Fase1("Fase1")
 
     elif state == "Fase2":
-        state = Fase2.Fase2("Fase2")
+        state,listavida = Fase2.Fase2("Fase2",listavida)
