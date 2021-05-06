@@ -13,7 +13,9 @@ import Creditos
 import Fase2
 import Fase3
 
+
 state = "Fase3"
+
 listavida = []
 while True:
 
