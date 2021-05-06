@@ -860,7 +860,7 @@ def Fase2(state,listavida):
                 monstro_action0, monstro_frame0 = chance_action_monstro(monstro_action0, monstro_frame0, 'parado')
             if contador0 == 0 and bater_monstro0 == False and contadoreslm > 50:
                 monstro_action0, monstro_frame0 = chance_action_monstro(monstro_action0, monstro_frame0,'atacando')
-                tiroesq1 = True
+                tiroslm = True
             if contador0 == 0 and bater_monstro0 == False and contadoreslm > 57:
                 contadoreslm = 0
                 Somtiroslime.play()
@@ -933,7 +933,7 @@ def Fase2(state,listavida):
                 monstro_action1, monstro_frame1 = chance_action_monstro(monstro_action1, monstro_frame1, 'parado')
             if contador1 == 0 and bater_monstro1 == False and contadoreslm > 50:
                 monstro_action1, monstro_frame1 = chance_action_monstro(monstro_action1, monstro_frame1,'atacando')
-                tiroesq1 = True
+                tiroslm = True
             if contador1 == 0 and bater_monstro1 == False and contadoreslm > 57:
                 contadoreslm = 0
                 Somtiroslime.play()
@@ -1004,7 +1004,7 @@ def Fase2(state,listavida):
                 monstro_action2, monstro_frame2 = chance_action_monstro(monstro_action2, monstro_frame2, 'parado')
             if contador2 == 0 and bater_monstro2 == False and contadoreslm > 50:
                 monstro_action2, monstro_frame2 = chance_action_monstro(monstro_action2, monstro_frame2,'atacando')
-                tiroesq1 = True
+                tiroslm= True
             if contador2 == 0 and bater_monstro2 == False and contadoreslm > 57:
                 contadoreslm = 0
                 Somtiroslime.play()
@@ -1076,7 +1076,7 @@ def Fase2(state,listavida):
                 monstro_action3, monstro_frame3 = chance_action_monstro(monstro_action3, monstro_frame3, 'parado')
             if contador3 == 0 and bater_monstro3 == False and contadoreslm > 50:
                 monstro_action3, monstro_frame3 = chance_action_monstro(monstro_action3, monstro_frame3,'atacando')
-                tiroesq1 = True
+                tiroslm = True
             if contador3 == 0 and bater_monstro3 == False and contadoreslm > 57:
                 contadoreslm = 0
                 Somtiroslime.play()
