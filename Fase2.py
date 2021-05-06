@@ -275,10 +275,14 @@ def Fase2(state,listavida):
         hp = pygame.transform.scale(hp, (35, 39))
         listavida.append(hp)
 
+
     for i in range(25):
         hp = pygame.image.load('hp_boss.png')
         hp = pygame.transform.scale(hp, (35, 39))
         listavidaboss.append(hp)
+
+
+
     world_data =[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
@@ -1110,7 +1114,9 @@ def Fase2(state,listavida):
                 monstro_action3, monstro_frame3 = chance_action_monstro(monstro_action3, monstro_frame3,'atacando')
             if contador3 == 0 and bater_monstro3 == False and contadoreslm > 17:
                 contadoreslm = 0
+
                 #Somtiroslime.play()
+
             if contadordisparo_slime1 == True and morreu3 == False:
                 movimentotiro += 3
                 janela.blit(tiro, (3455 - scroll[0], 1660 + movimentotiro - scroll[1] - 15))
