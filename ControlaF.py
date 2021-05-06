@@ -11,8 +11,15 @@ import Historia
 import Fase1
 import Creditos
 import Fase2
+import Fase3
+
 
 state = "Fase2"
+
+<<<<<<< HEAD
+state = "Fase2"
+=======
+>>>>>>> 0b56c492dd3f232249db4a8eef770d916bb3df2f
 listavida = []
 while True:
 
@@ -33,3 +40,6 @@ while True:
 
     elif state == "Fase2":
         state,listavida = Fase2.Fase2("Fase2",listavida)
+
+    elif state == "Fase3":
+        state,listavida = Fase3.Fase3("Fase3",listavida)
