@@ -38,8 +38,9 @@ def Fase2(state,listavida):
     Somcobra = pygame.mixer.Sound("cobramorte.mp3")
     Somtiroesqueleto = pygame.mixer.Sound("tiroesqueleto.mp3")
     Somtiroesqueleto.set_volume(1)
-    Somtiroslime = pygame.mixer.Sound("fireball.mp3")
+    Somporradaboss = pygame.mixer.Sound("fireball.mp3")
     Somminhoca = pygame.mixer.Sound("somminhoca.mp3")
+
     #Load Images
 
     frase_portao = pygame.image.load('Corraportao.png')
@@ -635,6 +636,7 @@ def Fase2(state,listavida):
 
         tile_rects = []
         morte_rects = []
+
 
         y=0
         for linha in world_data:
@@ -1780,6 +1782,10 @@ def Fase2(state,listavida):
                     bater_monstro14 = False
         # Ataque e perda de vida do Monstro 15
         if monstro_death_15 == False:
+            if 1650 <= player_rect.x <= 1990 and player_rect.y == 2300:
+                mixer.music.unload()
+                mixer.music.load("bossfight.mp3")
+                mixer.music.play(-1)
             if contadormonstro15 != 1:
                 num_monstros += 1
                 contadormonstro15 = 1
@@ -1799,6 +1805,7 @@ def Fase2(state,listavida):
                 for vida in listavidaboss:
                     janela.blit(vida, (x, 570))
                     x += 22
+
             janela.blit(pygame.transform.flip(boss, monstro_flip_cobra, False), (4200 - scroll[0] + movimento_monstro15, 2510 - scroll[1] - 15))
             monstro_rect15 = boss_rect.get_rect()
             monstro_rect15.x = 4350 + movimento_monstro15
@@ -1851,6 +1858,8 @@ def Fase2(state,listavida):
                 if contadorbater_monstro >= 10:
                     contadorbater_monstro = 0
                     bater_monstro15 = False
+                if contadorbater_monstro == 5:
+                    Somporradaboss.play()
         if contador < 100:
             contador += 1
             if contador0 == 0:
