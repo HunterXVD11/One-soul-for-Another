@@ -31,14 +31,19 @@ def Fase2(state):
     Sompulo = pygame.mixer.Sound("jump.mp3")
     Somespada = pygame.mixer.Sound("espadada2.mp3")
     Somdano = pygame.mixer.Sound("Kaorimorrendo.mp3")
-    Sominimigo = pygame.mixer.Sound("goblin.mp3")
     Sommorte = pygame.mixer.Sound("mortesound.mp3")
     Sommorte.set_volume(0.3)
+    Somesqueleto = pygame.mixer.Sound("morteesqueleto.mp3")
+    Somslime = pygame.mixer.Sound("slimemorte.mp3")
+    Somcobra = pygame.mixer.Sound("cobramorte.mp3")
+    Somtiroesqueleto = pygame.mixer.Sound("tiroesqueleto.mp3")
+    Somtiroesqueleto.set_volume(0.5)
+    Somtiroslime = pygame.mixer.Sound("fireball.mp3")
+    Somminhoca = pygame.mixer.Sound("somminhoca.mp3")
     #Load Images
 
     frase_portao = pygame.image.load('Corraportao.png')
     frase_portao = pygame.transform.scale(frase_portao,(600, 102))
-
     pause_img = pygame.image.load("pauseimg.png")
 
     #Parte Grama
@@ -815,6 +820,7 @@ def Fase2(state):
                 tiro_rect.x = 4065
                 tiro_rect.y = 1660 + movimentotiro
                 contadortiro += 1
+
                 if player_rect.colliderect(tiro_rect) and contador_hit >= 20 and len(listavida) > 0:
                     tomar_hit = True
                     vidas -= 1
@@ -825,6 +831,7 @@ def Fase2(state):
                 if contadortiro >= 100:
                     movimentotiro = 0
                     contadordisparo_slime1 = False
+
             if contadordisparo_slime1 == False:
                 movimentotiro = 0
                 contadortiro = 0
@@ -844,8 +851,7 @@ def Fase2(state):
                 contador_hit = 0
                 if somrodando == True:
                     Somdano.play()
-            if player_rect.colliderect(
-                    monstro_rect0) and contador_hit >= 100 and bater == True and bater_monstro0 == False:
+            if player_rect.colliderect(monstro_rect0) and contador_hit >= 100 and bater == True and bater_monstro0 == False:
                 contador0 = 1
                 morreu0 = True
                 monstro_action0, monstro_frame0 = chance_action_monstro(monstro_action0, monstro_frame0, 'morrendo')
@@ -857,7 +863,7 @@ def Fase2(state):
                 contadorM0 += 1
                 if contadorM0 == 8:
                     if somrodando == True:
-                        Sominimigo.play()
+                        Somslime.play()
                 if contadorM0 >= 30:
                     monstro_death_0 = True
 
@@ -923,7 +929,7 @@ def Fase2(state):
                 contadorM1 += 1
                 if contadorM1 == 8:
                     if somrodando == True:
-                        Sominimigo.play()
+                        Somslime.play()
                 if contadorM1 >= 30:
                     monstro_death_1 = True
             if bater_monstro1 == True:
@@ -988,7 +994,7 @@ def Fase2(state):
                 contadorM2 += 1
                 if contadorM2 == 8:
                     if somrodando == True:
-                        Sominimigo.play()
+                        Somslime.play()
                 if contadorM2 >= 30:
                     monstro_death_2 = True
             if bater_monstro2 == True:
@@ -999,6 +1005,7 @@ def Fase2(state):
                     bater_monstro2 = False
         # Ataque e perda de vida do Monstro 3
         if monstro_death_3 == False:
+
             if contadormonstro3 != 1:
                 num_monstros += 1
                 contadormonstro3 = 1
@@ -1023,6 +1030,7 @@ def Fase2(state):
                     movimentotiro = 0
                     contadordisparo_slime4 = False
             if contadordisparo_slime4 == False:
+
                 movimentotiro = 0
                 contadortiro = 0
                 contadortiro2 += 1
@@ -1041,8 +1049,7 @@ def Fase2(state):
                 contador_hit = 0
                 if somrodando == True:
                     Somdano.play()
-            if player_rect.colliderect(
-                    monstro_rect3) and contador_hit >= 100 and bater == True and bater_monstro3 == False:
+            if player_rect.colliderect(monstro_rect3) and contador_hit >= 100 and bater == True and bater_monstro3 == False:
                 contador3 = 1
                 morreu3 = True
                 monstro_action3, monstro_frame3 = chance_action_monstro(monstro_action3, monstro_frame3, 'morrendo')
@@ -1053,7 +1060,7 @@ def Fase2(state):
                 contadorM3 += 1
                 if contadorM3 == 8:
                     if somrodando == True:
-                        Sominimigo.play()
+                        Somslime.play()
                 if contadorM3 >= 30:
                     monstro_death_3 = True
             if bater_monstro3 == True:
@@ -1076,6 +1083,8 @@ def Fase2(state):
                 tiroesq1 = True
             if contador4 == 0 and bater_monstro4 == False and contadoresq1 > 113:
                 contadoresq1 = 0
+                if musicarodando == True and player_rect.x >= 650 and player_rect.x <= 2300 and player_rect.y >= 1200 and player_rect.y <= 1850:
+                    Somtiroesqueleto.play()
             if tiroesq1 == True and morreu4 == False:
                 movimentotiro += 3
                 janela.blit(espada, (650 + movimentotiro - scroll[0], 1565 - scroll[1] - 15))
@@ -1120,7 +1129,7 @@ def Fase2(state):
                 contadorM4 += 1
                 if contadorM4 == 8:
                     if somrodando == True:
-                        Sominimigo.play()
+                        Somesqueleto.play()
                 if contadorM4 >= 30:
                     monstro_death_4 = True
             if bater_monstro4 == True:
@@ -1142,6 +1151,8 @@ def Fase2(state):
                 tiroesq2 = True
             if contador5 == 0 and bater_monstro5 == False and contadoresq1 > 113:
                 contadoresq1 = 0
+                if musicarodando == True and player_rect.x >= 650 and player_rect.x <= 2300 and player_rect.y >= 1200 and player_rect.y <= 1850:
+                    Somtiroesqueleto.play()
             if tiroesq2 == True and morreu5 == False:
                 movimentotiro1 += 20
                 janela.blit(espada, (650 + movimentotiro1 - scroll[0], 1865 - scroll[1] - 15))
@@ -1187,7 +1198,7 @@ def Fase2(state):
                 contadorM5 += 1
                 if contadorM5 == 8:
                     if somrodando == True:
-                        Sominimigo.play()
+                        Somesqueleto.play()
                 if contadorM5 >= 30:
                     monstro_death_5 = True
             if bater_monstro5 == True:
@@ -1210,6 +1221,8 @@ def Fase2(state):
                 tiroesq3 = True
             if contador6 == 0 and bater_monstro6 == False and contadoresq1 > 113:
                 contadoresq1 = 0
+                if musicarodando == True and player_rect.x >= 650 and player_rect.x <= 2300 and player_rect.y >= 1200 and player_rect.y <= 1850:
+                    Somtiroesqueleto.play()
             if tiroesq3 == True and morreu6 == False:
                 movimentotiro2 += 20
                 janela.blit(espada, (1200 + movimentotiro2 - scroll[0], 1515 - scroll[1] - 15))
@@ -1253,7 +1266,7 @@ def Fase2(state):
                 contadorM6 += 1
                 if contadorM6 == 8:
                     if somrodando == True:
-                        Sominimigo.play()
+                        Somesqueleto.play()
                 if contadorM6 >= 30:
                     monstro_death_6 = True
             if bater_monstro6 == True:
@@ -1305,7 +1318,7 @@ def Fase2(state):
                     contadorM7 += 1
                     if contadorM7 == 8:
                         if somrodando == True:
-                            Sominimigo.play()
+                            Somminhoca.play()
                     if contadorM7 >= 30:
                         monstro_death_7 = True
                 if bater_monstro7 == True:
@@ -1356,7 +1369,7 @@ def Fase2(state):
                     contadorM8 += 1
                     if contadorM8 == 8:
                         if somrodando == True:
-                            Sominimigo.play()
+                            Somminhoca.play()
                     if contadorM8 >= 30:
                         monstro_death_8 = True
                 if bater_monstro8 == True:
@@ -1407,7 +1420,7 @@ def Fase2(state):
                     contadorM9 += 1
                     if contadorM9 == 8:
                         if somrodando == True:
-                            Sominimigo.play()
+                            Somminhoca.play()
                     if contadorM9 >= 30:
                         monstro_death_9 = True
                 if bater_monstro9 == True:
@@ -1458,7 +1471,7 @@ def Fase2(state):
                     contadorM10 += 1
                     if contadorM10 == 8:
                         if somrodando == True:
-                            Sominimigo.play()
+                            Somminhoca.play()
                     if contadorM10 >= 30:
                         monstro_death_10 = True
                 if bater_monstro10 == True:
@@ -1505,7 +1518,7 @@ def Fase2(state):
                     contadorM11 += 1
                     if contadorM11 == 8:
                         if somrodando == True:
-                            Sominimigo.play()
+                            Somcobra.play()
                     if contadorM11 >= 10:
                         monstro_death_11 = True
 
@@ -1553,7 +1566,7 @@ def Fase2(state):
                     contadorM12 += 1
                     if contadorM12 == 8:
                         if somrodando == True:
-                            Sominimigo.play()
+                            Somcobra.play()
                     if contadorM12 >= 10:
                         monstro_death_12 = True
 
@@ -1602,7 +1615,7 @@ def Fase2(state):
                     contadorM13 += 1
                     if contadorM13 == 8:
                         if somrodando == True:
-                            Sominimigo.play()
+                            Somcobra.play()
                     if contadorM13 >= 10:
                         monstro_death_13 = True
 
@@ -1649,7 +1662,7 @@ def Fase2(state):
                     contadorM14 += 1
                     if contadorM14 == 8:
                         if somrodando == True:
-                            Sominimigo.play()
+                            Somcobra.play()
                     if contadorM14 >= 10:
                         monstro_death_14 = True
 
@@ -1750,9 +1763,13 @@ def Fase2(state):
 
             restart = pygame.image.load('recomecar_restart.png')
             restart = pygame.transform.scale(restart, (230, 109))
+            restartvermelho = pygame.image.load('recomecar_restartvermelho.png')
+            restartvermelho = pygame.transform.scale(restartvermelho, (230, 109))
 
             voltar_menu = pygame.image.load('voltar_ao_menu_restart.png')
             voltar_menu = pygame.transform.scale(voltar_menu, (230, 109))
+            voltar_menuvermelho = pygame.image.load('voltar_ao_menu_restartvermelho.png')
+            voltar_menuvermelho = pygame.transform.scale(voltar_menuvermelho, (230, 109))
 
             animation_frames
             animation_frames = {}
@@ -1803,6 +1820,13 @@ def Fase2(state):
                 morte_action, morte_frame = chance_action(morte_action, morte_frame, 'parada')
 
                 morte_frame += 1
+                mouseposic = pygame.mouse.get_pos()
+                if mouseposic[0] >= 600 and mouseposic[0] <= 800 and mouseposic[1] >= 550 and mouseposic[1] <= 650:
+                    janela.blit(voltar_menuvermelho, (600, 550))
+
+                if mouseposic[0] >= 350 and mouseposic[0] <= 550 and mouseposic[1] >= 550 and mouseposic[1] <= 650:
+                    janela.blit(restartvermelho, (350, 550))
+
                 if morte_frame >= len(animation_database[morte_action]):
                     morte_frame = 0
                 morte_image_id = animation_database[morte_action][morte_frame]
