@@ -43,6 +43,11 @@ def Fase1(state):
     pause_img = pygame.image.load("pauseimg.png")
     barra_hp = pygame.image.load("barra_HP.png")
     barra_hp = pygame.transform.scale(barra_hp, (350, 39))
+    superjump_foto = pygame.image.load("Superjump.png")
+    superjump_foto = pygame.transform.scale(superjump_foto, (300, 300))
+    superjump_frase = pygame.image.load("SuperjumpFrase.png")
+    superjump_frase = pygame.transform.scale(superjump_frase,(500,178))
+    desbloqueou = pygame.image.load("desbloqueou.png")
 
     #Parte Grama
     chao_voador = pygame.image.load("chãos.png")
@@ -106,6 +111,7 @@ def Fase1(state):
     alma_monstro = pygame.transform.scale(alma_monstro, (50, 77))
     global somrodando
     global musicarodando
+    contadorportao = 0
     somrodando = True
     musicarodando = True
     movimento_direita = False
@@ -393,6 +399,8 @@ def Fase1(state):
         janela.blit(arvore, (2600 - scroll[0], 240 - scroll[1]))
         janela.blit(arvore, (6600 - scroll[0], 240 - scroll[1]))
 
+
+
         tile_rects = []
         morte_rects = []
 
@@ -535,9 +543,9 @@ def Fase1(state):
             x += 35
 
         #Desenha numero de Monstros a serem derrotados
-        janela.blit(contador_monstro, (145, 20))
+        janela.blit(contador_monstro, (70, 70))
         texto = fonte.render(str(num_monstros_mortos) + " / " + str(num_monstros),True, (0, 0, 0))
-        janela.blit(texto, (225, 27))
+        janela.blit(texto, (150, 77))
 
         bater_time = [0,0]
         movimento_player = [0,0]
@@ -1081,14 +1089,14 @@ def Fase1(state):
                         zx, zy = pygame.mouse.get_pos()
                         if zx >= 350 and zx <= 550 and zy >= 550 and zy <= 650:
                             state = "Fase1"
-                            return state
+                            return state,listavida
                         if zx >= 600 and zx <= 800 and zy >= 550 and zy <= 650:
                             state = "Menu"
                             mixer.music.unload()
                             mixer.music.load("musicamenu.mp3")
                             mixer.music.play(-1)
                             mixer.music.set_volume(0.5)
-                            return state
+                            return state,listavida
 
                 pygame.display.update()
         # Desenha portão
@@ -1100,9 +1108,13 @@ def Fase1(state):
             portao_rect.x = 9523
             portao_rect.y = 400
             if player_rect.colliderect(portao_rect):
-                state = "Fase2"
-
-                return state,listavida
+                janela.blit(superjump_foto,(450,100))
+                janela.blit(superjump_frase,(350,400))
+                janela.blit(desbloqueou, (400, 0))
+                contadorportao += 1
+                if contadorportao >= 60:
+                    state = "Fase2"
+                    return state,listavida
 
         if game_over == False:
             for event in pygame.event.get():
@@ -1207,11 +1219,11 @@ def Fase1(state):
                                         mixer.music.play(-1)
                                         mixer.music.set_volume(0.5)
                                         state = "Menu"
-                                        return state
+                                        return state,listavida
 
                                     if mx >= 360 and mx <= 860 and my >= 360 and my <= 460:
                                         state = "Fase1"
-                                        return state
+                                        return state,listavida
 
                                     if mx >= 360 and mx <= 860 and my >= 110 and my <= 210:
                                         varpause = False
