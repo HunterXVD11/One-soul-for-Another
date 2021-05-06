@@ -1216,5 +1216,9 @@ def Fase1(state):
         clock.tick(240)
         print("clock.tick:", clock.tick())
         print("clock.get_fps", clock.get_fps())
+<<<<<<< HEAD
+=======
+
+>>>>>>> bba4c1a8ed6f3c521ab7009f95e52ddd512a5a93
         pygame.display.update()
 
