@@ -271,10 +271,7 @@ def Fase2(state,listavida):
     contadorhitboss = 0
     listavidaboss = []
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 18c11cdc75b6d7052d0757f7e6151bcfbecb99e5
     for i in range(25):
         hp = pygame.image.load('hp_boss.png')
         hp = pygame.transform.scale(hp, (35, 39))
