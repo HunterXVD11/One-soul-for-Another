@@ -13,7 +13,15 @@ import Creditos
 import Fase2
 import Fase3
 
+<<<<<<< HEAD
 state = "Menu"
+=======
+
+
+
+state = "Fase3"
+
+>>>>>>> 641df9351b398a79416ad4ed536d3d6d9a3ae255
 listavida = []
 
 while True:

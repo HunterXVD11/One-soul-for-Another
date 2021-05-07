@@ -198,7 +198,10 @@ def Fase3(state,listavida):
     tiroesq2 = False
     tiroesq3 = False
 
-
+    for i in range(8):
+        hp = pygame.image.load('HP.png')
+        hp = pygame.transform.scale(hp, (35, 39))
+        listavida.append(hp)
 
     world_data =[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,2,1,0,0,0,0,0,0,0,0,0,0,3,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,2,1,0,0,0,0,0,0,0,0,0,0,3,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
@@ -1402,7 +1405,7 @@ def Fase3(state,listavida):
 
                 pygame.display.update()
         # Desenha portão
-        if num_monstros_mortos == 16:
+        if num_monstros_mortos == 8:
             janela.blit(frase_portao, (300, 20))
             portao = pygame.image.load('Portao_aberto.png')
             portao = pygame.transform.scale(portao, (125, 157))
