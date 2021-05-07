@@ -24,7 +24,7 @@ def Historia(state):
         janela.fill((0, 0, 0))
         janela.blit(pergaminho, (150, pergaminho_altura))
         if pergaminho_altura > - 1000:
-            pergaminho_altura -= 10
+            pergaminho_altura -= 2
         else:
             janela.blit(press_enter,(225, 450))
             for event in pygame.event.get():

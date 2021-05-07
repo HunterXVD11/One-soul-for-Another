@@ -27,8 +27,6 @@ clock = pygame.time.Clock()
 
 def Menu(state):
     while True:
-        print("clock.tick:", clock.tick())
-        print("clock.get_fps", clock.get_fps())
         fundo_menu_img = pygame.image.load("FundoMenuTeste.jpg")
         janela.blit(fundo_menu_img, (0, 0))
         janela.blit(jogar, (0, 350))
@@ -51,7 +49,6 @@ def Menu(state):
                 pygame.quit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mx, my = pygame.mouse.get_pos()
-                print(mx,my)
 
                 if mx >= 0 and mx <= 300 and my >= 350 and my < 425:
                     mixer.music.unload()
