@@ -12,16 +12,11 @@ import Fase1
 import Creditos
 import Fase2
 import Fase3
-
-<<<<<<< HEAD
-state = "Menu"
-=======
-
+import FIM
 
 
 state = "Fase3"
 
->>>>>>> 641df9351b398a79416ad4ed536d3d6d9a3ae255
 listavida = []
 
 while True:
@@ -46,3 +41,6 @@ while True:
 
     elif state == "Fase3":
         state,listavida = Fase3.Fase3("Fase3",listavida)
+
+    elif state == "FIM":
+        state = FIM.Fim("FIM")

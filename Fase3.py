@@ -1410,8 +1410,9 @@ def Fase3(state,listavida):
             portao = pygame.image.load('Portao_aberto.png')
             portao = pygame.transform.scale(portao, (125, 157))
             portao_rect = portao.get_rect()
-            portao_rect.x = 9523
-            portao_rect.y = 400
+            portao_rect.x = 7123
+            portao_rect.y = 2300
+
             if player_rect.colliderect(portao_rect):
                 state = "FIM"
                 return state,listavida
