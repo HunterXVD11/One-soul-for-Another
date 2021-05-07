@@ -22,7 +22,7 @@ if getattr(sys, "frozen", False):
     os.chdir(sys._MEIPASS)
 
 
-state = "Fase3"
+state = "Menu"
 
 listavida = []
 
