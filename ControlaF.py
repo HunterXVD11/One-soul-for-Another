@@ -13,15 +13,17 @@ import Creditos
 import Fase2
 import Fase3
 
-<<<<<<< HEAD
-state = "Menu"
-=======
+import os, sys
 
+dirpath = os.getcwd()
+sys.path.append(dirpath)
+
+if getattr(sys, "frozen", False):
+    os.chdir(sys._MEIPASS)
 
 
 state = "Fase3"
 
->>>>>>> 641df9351b398a79416ad4ed536d3d6d9a3ae255
 listavida = []
 
 while True:

@@ -9,7 +9,6 @@ import move
 
 def Fase3(state,listavida):
     pygame.init()
-
     fonte = pygame.font.Font('freesansbold.ttf', 45)
     clock = pygame.time.Clock()
     janela_largura = 1200
@@ -23,9 +22,9 @@ def Fase3(state,listavida):
     tile_tamanho = 50
 
     #Musica
-    mixer.music.load("somcaverna.mp3")
+    mixer.music.load("somfase3.mp3")
     mixer.music.play(-1)
-    mixer.music.set_volume(0.3)
+    mixer.music.set_volume(0.8)
 
     # Sons
     Sompulo = pygame.mixer.Sound("jump.mp3")
@@ -34,12 +33,9 @@ def Fase3(state,listavida):
     Sommorte = pygame.mixer.Sound("mortesound.mp3")
     Sommorte.set_volume(0.3)
     Somesqueleto = pygame.mixer.Sound("morteesqueleto.mp3")
-    Somslime = pygame.mixer.Sound("slimemorte.mp3")
     Somcobra = pygame.mixer.Sound("cobramorte.mp3")
-    Somtiroesqueleto = pygame.mixer.Sound("tiroesqueleto.mp3")
-    Somtiroesqueleto.set_volume(1)
-    Somtiroslime = pygame.mixer.Sound("fireball.mp3")
-    Somminhoca = pygame.mixer.Sound("somminhoca.mp3")
+    Somgoblin = pygame.mixer.Sound("goblinmorrendo.mp3")
+    Somcogumelo = pygame.mixer.Sound("somcogumelomorrendo.mp3")
     #Load Images
 
     frase_portao = pygame.image.load('Corraportao.png')
@@ -568,10 +564,7 @@ def Fase3(state,listavida):
 
     while True:
 
-        print("clock.tick:", clock.tick())
-        print("clock.get_fps", clock.get_fps())
-        print(player_rect.x)
-        print(player_rect.y)
+
         true_scroll[0] += (player_rect.x - true_scroll[0] - 600) / 10
         true_scroll[1] += (player_rect.y - true_scroll[1] - 335) / 10
         scroll = true_scroll.copy()
@@ -789,8 +782,7 @@ def Fase3(state,listavida):
                 tiroesq1 = True
             if contador4 == 0 and bater_monstro4 == False and contadoresq1 > 113:
                 contadoresq1 = 0
-                if musicarodando == True and player_rect.x >= 650 and player_rect.x <= 2300 and player_rect.y >= 1200 and player_rect.y <= 1850:
-                    Somtiroesqueleto.play()
+
             if tiroesq1 == True and morreu4 == False:
                 movimentotiro5 += 9
                 janela.blit(espada, (2050 + movimentotiro5 - scroll[0], 3350 - scroll[1] - 15))
@@ -833,7 +825,7 @@ def Fase3(state,listavida):
                 contadorM4 += 1
                 if contadorM4 == 8:
                     if somrodando == True:
-                        Somesqueleto.play()
+                        Somgoblin.play()
                 if contadorM4 >= 30:
                     monstro_death_4 = True
             if bater_monstro4 == True:
@@ -855,8 +847,7 @@ def Fase3(state,listavida):
                 tiroesq2 = True
             if contador5 == 0 and bater_monstro5 == False and contadoresq1 > 113:
                 contadoresq1 = 0
-                if musicarodando == True and player_rect.x >= 650 and player_rect.x <= 2300 and player_rect.y >= 1200 and player_rect.y <= 1850:
-                    Somtiroesqueleto.play()
+
             if tiroesq2 == True and morreu5 == False:
                 movimentotiro1 += 20
                 janela.blit(espada, (2050 + movimentotiro1 - scroll[0], 2750 - scroll[1] - 15))
@@ -900,7 +891,7 @@ def Fase3(state,listavida):
                 contadorM5 += 1
                 if contadorM5 == 8:
                     if somrodando == True:
-                        Somesqueleto.play()
+                        Somgoblin.play()
                 if contadorM5 >= 30:
                     monstro_death_5 = True
             if bater_monstro5 == True:
@@ -923,8 +914,7 @@ def Fase3(state,listavida):
                 tiroesq3 = True
             if contador6 == 0 and bater_monstro6 == False and contadoresq1 > 113:
                 contadoresq1 = 0
-                if musicarodando == True and player_rect.x >= 650 and player_rect.x <= 2300 and player_rect.y >= 1200 and player_rect.y <= 1850:
-                    Somtiroesqueleto.play()
+
             if tiroesq3 == True and morreu6 == False:
                 movimentotiro2 += 20
                 janela.blit(espada, (6973 + movimentotiro2 - scroll[0], 1900 - scroll[1] - 15))
@@ -966,7 +956,7 @@ def Fase3(state,listavida):
                 contadorM6 += 1
                 if contadorM6 == 8:
                     if somrodando == True:
-                        Somesqueleto.play()
+                        Somgoblin.play()
                 if contadorM6 >= 30:
                     monstro_death_6 = True
             if bater_monstro6 == True:
@@ -992,7 +982,7 @@ def Fase3(state,listavida):
             monstro_rect11 = cogumelo1.get_rect()
             monstro_rect11.x = 1693 + movimento_monstro11
             monstro_rect11.y = 3720
-            print(monstro_rect11.y)
+
 
             if -400 <= player_rect.x - monstro_rect11.x <= 0 and player_rect.y + 20 == monstro_rect11.y:
                 movimento_monstro11 -= 3
@@ -1021,7 +1011,7 @@ def Fase3(state,listavida):
                 contadorM11 += 1
                 if contadorM11 == 8:
                     if somrodando == True:
-                        Somcobra.play()
+                        Somcogumelo.play()
                 if contadorM11 >= 10:
                     monstro_death_11 = True
 
@@ -1068,7 +1058,7 @@ def Fase3(state,listavida):
                 contadorM12 += 1
                 if contadorM12 == 8:
                     if somrodando == True:
-                        Somcobra.play()
+                        Somcogumelo.play()
                 if contadorM12 >= 10:
                     monstro_death_12 = True
 
@@ -1116,7 +1106,7 @@ def Fase3(state,listavida):
                 contadorM13 += 1
                 if contadorM13 == 8:
                     if somrodando == True:
-                        Somcobra.play()
+                        Somcogumelo.play()
                 if contadorM13 >= 10:
                     monstro_death_13 = True
 
@@ -1162,7 +1152,7 @@ def Fase3(state,listavida):
                 contadorM14 += 1
                 if contadorM14 == 8:
                     if somrodando == True:
-                        Somcobra.play()
+                        Somcogumelo.play()
                 if contadorM14 >= 10:
                     monstro_death_14 = True
 
@@ -1209,7 +1199,7 @@ def Fase3(state,listavida):
                 contadorM15 += 1
                 if contadorM15 == 8:
                     if somrodando == True:
-                        Somcobra.play()
+                        Somcogumelo.play()
                 if contadorM15 >= 10:
                     monstro_death_15 = True
 
@@ -1452,7 +1442,7 @@ def Fase3(state,listavida):
                     if event.key == K_ESCAPE:
                         varpause = True
                         while varpause:
-                            print(somrodando, musicarodando)
+
                             janela3 = janela.blit(pause_img, (0, 0))
                             mouseposic = pygame.mouse.get_pos()
                             voltarmenuon = pygame.image.load("voltarmenupause.png")
@@ -1533,6 +1523,6 @@ def Fase3(state,listavida):
                                     if mx >= 360 and mx <= 860 and my >= 110 and my <= 210:
                                         varpause = False
                             pygame.display.update()
-        clock.tick(300)
+
         pygame.display.update()
 
