@@ -1122,11 +1122,11 @@ def Fase3(state,listavida):
                 num_monstros += 1
                 contadormonstro14 = 1
             if contador14 == 0 and bater_monstro14 == False:
-                cogumelo_action4, cogumelo_frame4 = chance_action_monstro(cogumelo_action4, cogumelo_frame4, 'parado')
-            janela.blit(pygame.transform.flip(cogumelo4, monstro_flip_cogumelo, False),(3070 - scroll[0] + movimento_monstro14, 1220 - scroll[1] - 15))
+                cogumelo_action4, cogumelo_frame4 = chance_action_monstro(cogumelo_action4, cogumelo_frame4, 'andando')
+            janela.blit(pygame.transform.flip(cogumelo4, monstro_flip_cogumelo, False),(1183 - scroll[0] + movimento_monstro14, 520- scroll[1] - 15))
             monstro_rect14 = cogumelo1.get_rect()
-            monstro_rect14.x = 3070 + movimento_monstro14
-            monstro_rect14.y = 1220
+            monstro_rect14.x = 1183 + movimento_monstro14
+            monstro_rect14.y = 520
             if -400 <= player_rect.x - monstro_rect14.x <= 0 and player_rect.y + 20 == monstro_rect14.y:
                 movimento_monstro14 -= 3
                 monstro_flip_cogumelo = True
@@ -1400,8 +1400,9 @@ def Fase3(state,listavida):
             portao = pygame.image.load('Portao_aberto.png')
             portao = pygame.transform.scale(portao, (125, 157))
             portao_rect = portao.get_rect()
-            portao_rect.x = 9523
-            portao_rect.y = 400
+            portao_rect.x = 7123
+            portao_rect.y = 2300
+
             if player_rect.colliderect(portao_rect):
                 state = "FIM"
                 return state,listavida

@@ -12,6 +12,7 @@ import Fase1
 import Creditos
 import Fase2
 import Fase3
+<<<<<<< HEAD
 
 import os, sys
 
@@ -20,6 +21,9 @@ sys.path.append(dirpath)
 
 if getattr(sys, "frozen", False):
     os.chdir(sys._MEIPASS)
+=======
+import FIM
+>>>>>>> ecb54426f2ac55b8a646a3e9de26983e62d1d611
 
 
 state = "Menu"
@@ -48,3 +52,6 @@ while True:
 
     elif state == "Fase3":
         state,listavida = Fase3.Fase3("Fase3",listavida)
+
+    elif state == "FIM":
+        state = FIM.Fim("FIM")
