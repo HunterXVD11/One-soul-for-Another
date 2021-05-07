@@ -15,6 +15,11 @@ import Fase3
 
 state = "Menu"
 
+<<<<<<< HEAD
+=======
+state = "Menu"
+
+>>>>>>> 18c11cdc75b6d7052d0757f7e6151bcfbecb99e5
 listavida = []
 while True:
 

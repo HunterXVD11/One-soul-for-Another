@@ -271,12 +271,14 @@ def Fase2(state,listavida):
     contadorhitboss = 0
     listavidaboss = []
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 18c11cdc75b6d7052d0757f7e6151bcfbecb99e5
     for i in range(25):
         hp = pygame.image.load('hp_boss.png')
         hp = pygame.transform.scale(hp, (35, 39))
         listavidaboss.append(hp)
-
 
 
     world_data =[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,2,2,2,2,2,2,2],
@@ -2018,7 +2020,7 @@ def Fase2(state,listavida):
                     elif event.type == pygame.MOUSEBUTTONDOWN:
                         zx, zy = pygame.mouse.get_pos()
                         if zx >= 350 and zx <= 550 and zy >= 550 and zy <= 650:
-                            state = "Fase2"
+                            state = "Fase1"
                             return state,listavida
                         if zx >= 600 and zx <= 800 and zy >= 550 and zy <= 650:
                             state = "Menu"
@@ -2035,10 +2037,11 @@ def Fase2(state,listavida):
             portao = pygame.image.load('Portao_aberto.png')
             portao = pygame.transform.scale(portao, (125, 157))
             portao_rect = portao.get_rect()
-            portao_rect.x = 9523
-            portao_rect.y = 400
+            portao_rect.x = 5043
+            portao_rect.y = 2500
             if player_rect.colliderect(portao_rect):
-                janela.blit(vitoria, (350, 200))
+                state = "Fase3"
+                return state,listavida
 
         if game_over == False:
             for event in pygame.event.get():
