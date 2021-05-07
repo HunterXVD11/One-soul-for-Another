@@ -14,7 +14,7 @@ import Fase2
 import Fase3
 
 
-state = "Menu"
+state = "Fase3"
 
 listavida = []
 while True:
