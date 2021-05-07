@@ -14,7 +14,7 @@ import Fase2
 import Fase3
 
 
-state = "Fase2"
+state = "Fase1"
 
 listavida = []
 while True:
