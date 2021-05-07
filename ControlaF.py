@@ -13,13 +13,8 @@ import Creditos
 import Fase2
 import Fase3
 
+state = "Menu"
 
-state = "Fase2"
-
-<<<<<<< HEAD
-state = "Fase2"
-=======
->>>>>>> 0b56c492dd3f232249db4a8eef770d916bb3df2f
 listavida = []
 while True:
 

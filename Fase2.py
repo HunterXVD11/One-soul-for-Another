@@ -271,11 +271,6 @@ def Fase2(state,listavida):
     contadorhitboss = 0
     listavidaboss = []
 
-    for i in range(8):
-        hp = pygame.image.load('HP.png')
-        hp = pygame.transform.scale(hp, (35, 39))
-        listavida.append(hp)
-
 
     for i in range(25):
         hp = pygame.image.load('hp_boss.png')
@@ -621,10 +616,7 @@ def Fase2(state,listavida):
 
     while True:
 
-        print("clock.tick:", clock.tick())
-        print("clock.get_fps", clock.get_fps())
-        print(player_rect.x)
-        print(player_rect.y)
+
         true_scroll[0] += (player_rect.x - true_scroll[0] - 600) / 10
         true_scroll[1] += (player_rect.y - true_scroll[1] - 335) / 10
         scroll = true_scroll.copy()
@@ -1810,10 +1802,7 @@ def Fase2(state,listavida):
             monstro_rect15 = boss_rect.get_rect()
             monstro_rect15.x = 4350 + movimento_monstro15
             monstro_rect15.y = 2550
-            print(player_rect.x)
-            print(monstro_rect15.x)
-            print(player_rect.y)
-            print(monstro_rect15.y)
+
             #pygame.draw.rect(janela,(255,255,255,255),player_rect,2)
             #pygame.draw.rect(janela, (255, 255, 255, 255), monstro_rect15, 2)
             if boss_action == 'andando':
@@ -2086,7 +2075,7 @@ def Fase2(state,listavida):
                     if event.key == K_ESCAPE:
                         varpause = True
                         while varpause:
-                            print(somrodando, musicarodando)
+
                             janela3 = janela.blit(pause_img, (0, 0))
                             mouseposic = pygame.mouse.get_pos()
                             voltarmenuon = pygame.image.load("voltarmenupause.png")
